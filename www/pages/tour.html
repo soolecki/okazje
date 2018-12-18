@@ -1,0 +1,130 @@
+
+<div class="page" data-name="package">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left">
+        <a class="link back icon-only">
+          <i class="icon f7-icons ios-only">arrow_left</i>
+          <i class="icon material-icons md-only">arrow_back</i>
+        </a>
+      </div>
+      <div class="title sliding">Wycieczka</div>
+      <div class="right">
+        {{#if shareable}}
+        <a class="link share icon-only">
+          <i class="icon f7-icons ios-only">share</i>
+          <i class="icon material-icons md-only">share</i>
+        </a>
+        {{/if}}
+        <a class="link icon-only">
+          <i class="icon f7-icons ios-only">heart</i>
+          <i class="icon material-icons md-only">favorite_border</i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+{{#if result.record.found_pos}}
+  <div class="toolbar toolbar-bottom-md">
+    <div class="toolbar-inner">
+      <a href="#" class="link">
+        <i class="icon f7-icons ios-only">chevron_left</i>
+        <i class="icon material-icons md-only">navigate_before</i>
+      </a>
+      <div class="title sliding">1/24</div>
+      <a href="#" class="link">
+        <i class="icon f7-icons ios-only">chevron_right</i>
+        <i class="icon material-icons md-only">navigate_next</i>
+      </a>
+    </div>
+  </div>
+{{/if}}
+
+  <div class="page-content">
+    <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.images)[0]"}}"></span>
+
+    <div class="block"><h1>{{result.record.title}}</h1></div>
+
+    <div class="block">{{result.record.description}}</div>
+
+<!-- LOT ------------------->
+
+    <div class="block-title">Lot</div>
+    <!--<img class="carrier-logo" src="//img.tanie-loty.com.pl/storage_local/images/airlines/{{result.record.carrier_code}}.gif">-->
+    <div class="card occ-deal-container occ-flight">
+
+        <div class="card-content card-content-padding">
+        
+          <div class="occ-title">
+            {{result.city_from.name}} ⇄ {{result.city_to.name}} 
+            {{#js_if "this.result.record.id>0"}}
+              <span class="occ-iata">({{result.airport_from.iata}}&nbsp;-&nbsp;{{result.airport_to.iata}})</span>
+            {{/js_if}}
+          </div>
+
+          <div class="row">
+            <div class="col"><small>{{result.date_from__day_of_week}}</small>{{result.date_from__formatted}}</div>
+            <div class="col"><small>{{result.date_to__day_of_week}}</small>{{result.date_to__formatted}}</div>
+          </div>
+
+          <span class="occ-deal-element occ-luggage">{{result.record.luggage_description}}</span>
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_flight}}</b> zł</span>
+          
+
+          {{#if result.record.url_flight}}
+            <a href="{{result.record.url_flight}}" class="link external" target="_blank">Sprawdź lot (L)</a>
+          {{else}}
+            <a href="#" class="link">Sprawdź lot (B)</a>
+          {{/if}}
+        </div>
+
+    </div>       
+
+<!-- HOTEL ----------------->
+
+    <div class="block-title">Hotel</div>
+    <div class="card occ-deal-container occ-hotel">
+
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.hotel.images)[0]"}}"><div class="card-header-image-caption">{{result.record.hotel.name}}</div></div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.hotel.description}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_hotel}}</b> zł</span>
+          <a href="{{result.record.url_hotel}}" class="link external" target="_blank">Zobacz hotel</a>
+        </div>
+
+    </div>       
+
+<!-- BILET ----------------->
+
+    {{#js_if "this.result.record.price_ticket>0"}}
+
+    <div class="block-title">Bilet</div>
+    <div class="card occ-deal-container occ-ticket">
+
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"><div class="card-header-image-caption">{{result.record.title_ticket}}</div></div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.description_ticket}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_ticket}}</b> zł</span>
+          <a href="{{result.record.url_ticket}}" class="link external" target="_blank">Sprawdź bilet</a>
+        </div>
+
+    </div>       
+
+    {{/js_if}}
+
+
+    
+    </div>
+</div>

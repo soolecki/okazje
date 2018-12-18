@@ -1,0 +1,150 @@
+
+<div class="page" data-name="package">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left">
+        <a class="link back icon-only">
+          <i class="icon f7-icons ios-only">arrow_left</i>
+          <i class="icon material-icons md-only">arrow_back</i>
+        </a>
+      </div>
+      <div class="title sliding">Pakiet</div>
+      <div class="right">
+        {{#if shareable}}
+        <a class="link share icon-only">
+          <i class="icon f7-icons ios-only">share</i>
+          <i class="icon material-icons md-only">share</i>
+        </a>
+        {{/if}}
+        <a class="link icon-only">
+          <i class="icon f7-icons ios-only">heart</i>
+          <i class="icon material-icons md-only">favorite_border</i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+{{#js_if "this.result.collection !=null && Object.keys(this.result.collection).length>1"}}
+  <div class="toolbar toolbar-bottom-md">
+    <div class="toolbar-inner">
+      <a href="{{js "this.result.prev_url.replace('/okazje/','/okazje/entries/')"}}" class="link" data-push-state="true">
+        <i class="icon f7-icons ios-only">chevron_left</i>
+        <i class="icon material-icons md-only">navigate_before</i>
+      </a>
+      <div class="title sliding">{{js "this.result.found_pos ? this.result.found_pos : 1"}}/{{js "Object.keys(this.result.collection).length"}}</div>
+      <a href="{{js "this.result.next_url.replace('/okazje/','/okazje/entries/')"}}" class="link" data-push-state="true">
+        <i class="icon f7-icons ios-only">chevron_right</i>
+        <i class="icon material-icons md-only">navigate_next</i>
+      </a>
+    </div>
+  </div>
+{{/js_if}}
+
+  <div class="page-content">
+    <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.images)[0]"}}"></span>
+
+    <div class="block"><h1>{{result.record.title}}</h1></div>
+
+    <div class="block">{{result.record.description}}</div>
+
+<!-- LOT ------------------->
+
+    <div class="block-title">Lot</div>
+    <!--<img class="carrier-logo" src="//img.tanie-loty.com.pl/storage_local/images/airlines/{{result.record.carrier_code}}.gif">-->
+    <div class="card occ-deal-container occ-flight">
+
+        <div class="card-content card-content-padding">
+        
+          <div class="occ-title">
+            {{result.city_from.name}} ⇄ {{result.city_to.name}} 
+            {{#js_if "this.result.record.id>0"}}
+              <span class="occ-iata">({{result.airport_from.iata}}&nbsp;-&nbsp;{{result.airport_to.iata}})</span>
+            {{/js_if}}
+          </div>
+
+          <div class="row padding-top" style="line-height:1.2">
+            <div class="col-10"><i class="material-icons">flight_takeoff</i></div>
+            <div class="col-40"><small>{{result.date_from__day_of_week}}</small><br><b>{{result.date_from__formatted}}</b></div>
+            <div class="col-10"><i class="material-icons">flight_land</i></div>
+            <div class="col-40"><small>{{result.date_to__day_of_week}}</small><br><b>{{result.date_to__formatted}}</b></div>
+          </div>
+
+          <div class="row padding-top">
+            <div class="col-10"><i class="material-icons">business_center</i></div>
+            <div class="col-90">{{result.record.luggage_description}}</div>
+          </div>
+
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_flight}}</b> zł</span>
+          <a href="{{result.record.url_flight}}" class="link external" target="_blank">Sprawdź lot</a>
+        </div>
+
+    </div>       
+
+<!-- HOTEL ----------------->
+
+    <div class="block-title">Hotel</div>
+    <div class="card occ-deal-container occ-hotel">
+
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.hotel.images)[0]"}}"><div class="card-header-image-caption">{{result.record.hotel.name}}</div></div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.hotel.description}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_hotel}}</b> zł</span>
+          <a href="{{result.record.url_hotel}}" class="link external" target="_blank">Sprawdź bilet</a>
+        </div>
+
+    </div>          
+
+<!-- BILET ----------------->
+
+    {{#js_if "this.result.record.price_ticket>0"}}
+
+    <div class="block-title">Atrakcje</div>
+    <div class="card occ-deal-container occ-ticket">
+
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"><div class="card-header-image-caption">{{result.record.title_ticket}}</div></div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.description_ticket}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_ticket}}</b> zł</span>
+          <a href="{{result.record.url_ticket}}" class="link external" target="_blank">Sprawdź bilet</a>
+        </div>
+
+    </div>       
+
+    {{/js_if}}
+
+<!-- TRANSFER ----------------->
+
+    {{#js_if "this.result.record.price_from_bus>0"}}
+
+    <div class="block-title">Transfer</div>
+    <div class="card occ-deal-container occ-bus">
+
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.image_bus)[0]"}}"><div class="card-header-image-caption">{{result.record.title_bus}}</div></div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.description_bus}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_from_bus}}</b> zł</span>
+          <a href="{{result.record.url_bus_generated}}" class="link external" target="_blank">Sprawdź</a>
+        </div>
+
+    </div>       
+
+    {{/js_if}}
+    
+    </div>
+</div>
