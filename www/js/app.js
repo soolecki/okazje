@@ -35,7 +35,14 @@ var mainView = app.views.create('.view-main', {
 var filtersView = app.views.create('.panel-left .view');
 
 $$(document).on('DOMContentLoaded', function() { 
+  init();
+});
 
+$$(document).on('deviceready', function() {
+    init();
+});
+
+function init(){
     $$('#app').on('change', '#filters_form select', function (e) {
 
       if(e.target.value=='default') $$(e.target).closest('a').removeClass('no-default'); else $$(e.target).closest('a').addClass('no-default');
@@ -70,8 +77,7 @@ $$(document).on('DOMContentLoaded', function() {
 
     if(!document.location.hash)app.router.navigate('/home/');
 
-
-});
+}
 
 function updateFilters(data_filters){
   $$('#filters').html('');
