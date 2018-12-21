@@ -32,7 +32,7 @@ routes = [
                 break;
               }
               default:{
-                url='404';
+                url='/okazje/lists'+(obj.url.replace('/component','').replace('/okazje','').replace('//','/') );
               }
             }
 
@@ -95,6 +95,7 @@ routes = [
           case 'flight':{tplname='flight.html';break;}
           default:{tplname='package.html';}
         }
+        console.log(result);
 
         resolve( { templateUrl: './pages/'+tplname }, { context: {
           result: result,
@@ -152,7 +153,15 @@ routes = [
       var app = router.app;
 
         app.preloader.show();
-        app.request.getJSON('https://www.tanie-loty.com.pl/okazje/?'+routeTo.params.Url,null,function(result){
+
+        if(routeTo.params.Url.indexOf('&')>0){
+          url = 'https://www.tanie-loty.com.pl/okazje/?'+routeTo.params.Url;  
+        }else{
+          url = 'https://www.tanie-loty.com.pl/okazje/'+routeTo.params.Url+'?app=true';  
+        }
+        
+
+        app.request.getJSON(url,null,function(result){
 
           for (var key in result.list) {
             var obj=result.list[key];
