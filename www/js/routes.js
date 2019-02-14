@@ -19,12 +19,17 @@ routes = [
 
           app.data.data_filters = result['filters'];
 
+          if( app.form.getFormData("filters_form") ){
+            mode = app.form.getFormData("filters_form").mode;
+          }
+          if(typeof mode == 'undefined')mode='simple';
+
           resolve(
             {
               templateUrl: './pages/searchform.html',
             },
             {
-              context: { filters: result['filters'], mode: app.form.getFormData("filters_form").mode }
+              context: { filters: result['filters'], mode: mode }
             }            
           );
           //setTimeout("updateFilters(app.data.data_filters);",1000);

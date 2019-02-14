@@ -86,7 +86,7 @@ function init(){
     });*/
 
     $$('#app').on('click', '.share', function (e) {
-      if (navigator.share) {
+      if (navigator.share) { 
         navigator.share({
             title: 'Web Fundamentals',
             text: 'Check out Web Fundamentals — it rocks!',
