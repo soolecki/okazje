@@ -3,12 +3,18 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="left">
+        <a href="/home/" class="link icon-only">
+          <i class="icon f7-icons ios-only">arrow_left</i>
+          <i class="icon material-icons md-only">arrow_back</i>
+        </a>
+      </div>
+      <!--<div class="left">
         <a href="#" class="link icon-only panel-open" data-panel="left">
           <i class="icon f7-icons ios-only">menu</i>
           <i class="icon material-icons md-only">menu</i>
         </a>
-      </div>
-      <div class="title sliding">Okazje</div>
+      </div>-->
+      <div class="title sliding">{{title}}</div>
     </div>
   </div>
 
@@ -17,5 +23,6 @@
         {{rendered_html}}
       {{/each}}
   </div>
+
 
 </div>

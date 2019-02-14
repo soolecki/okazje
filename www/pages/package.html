@@ -17,15 +17,15 @@
           <i class="icon material-icons md-only">share</i>
         </a>
         {{/if}}
-        <a class="link icon-only">
+        <a class="link favorite icon-only">
           <i class="icon f7-icons ios-only">heart</i>
-          <i class="icon material-icons md-only">favorite_border</i>
+          <i class="icon material-icons md-only">{{#js_if "this.favorited == true"}}favorite{{/js_if}}{{#js_if "this.favorited == false"}}favorite_border{{/js_if}}</i>
         </a>
       </div>
     </div>
   </div>
 
-{{#js_if "this.result.collection !=null && Object.keys(this.result.collection).length>1"}}
+{{#js_if "false && this.result.collection !=null && Object.keys(this.result.collection).length>1"}}
   <div class="toolbar toolbar-bottom-md">
     <div class="toolbar-inner">
       <a href="{{js "this.result.prev_url.replace('/okazje/','/okazje/entries/')"}}" class="link" data-push-state="true">
@@ -42,9 +42,12 @@
 {{/js_if}}
 
   <div class="page-content">
-    <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.images)[0]"}}"></span>
+    <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.images)[0]"}}"></span>
 
-    <div class="block"><h1>{{result.record.title}}</h1></div>
+    <span style="display:none" data-attr="image">{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.images)[0]"}}</span>
+    <span style="display:none" data-attr="price">{{result.record.price}}</span>
+
+    <div class="block"><h1 data-attr="title">{{result.record.title}}</h1></div>
 
     <div class="block">{{result.record.description}}</div>
 
@@ -89,7 +92,6 @@
     <div class="block-title">Hotel</div>
     <div class="card occ-deal-container occ-hotel">
 
-        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.hotel.images)[0]"}}"><div class="card-header-image-caption">{{result.record.hotel.name}}</div></div>
 
         <div class="card-content card-content-padding">
           {{result.record.hotel.description}}
@@ -109,7 +111,7 @@
     <div class="block-title">Atrakcje</div>
     <div class="card occ-deal-container occ-ticket">
 
-        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"><div class="card-header-image-caption">{{result.record.title_ticket}}</div></div>
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"><div class="card-header-image-caption">{{result.record.title_ticket}}</div></div>
 
         <div class="card-content card-content-padding">
           {{result.record.description_ticket}}

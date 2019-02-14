@@ -12,12 +12,12 @@ var app  = new Framework7({
   root: '#app',
   id: 'io.framework7.artweb.okazje',
   name: 'Okazje',
-  theme: 'auto',
+  theme: 'md',
   routes: routes,
   precompileTemplates: false,
   template7Pages: true,  
   lazy:{
-    threshold: 100,
+    threshold: 800,
     sequential: false
   },
   pushState: true,
@@ -32,7 +32,8 @@ var mainView = app.views.create('.view-main', {
   pushState: true
 });
 
-var filtersView = app.views.create('.panel-left .view');
+
+//var filtersView = app.views.create('.panel-left .view');
 
 $$(document).on('DOMContentLoaded', function() { 
   init();
@@ -45,23 +46,44 @@ $$(document).on('deviceready', function() {
 function init(){
     $$('#app').on('change', '#filters_form select', function (e) {
 
-      if(e.target.value=='default') $$(e.target).closest('a').removeClass('no-default'); else $$(e.target).closest('a').addClass('no-default');
-      if($$(e.target).hasClass('no-route'))return false;
+      if(e.target.value=='default') $$(e.target).closest('li').removeClass('no-default'); else $$(e.target).closest('li').addClass('no-default');
+      /*if($$(e.target).hasClass('no-route'))return false;
+
+      inputs=$$('#filters_form select,#filters_form input');
+      var str = "";
+      inputs.each(function (i, item) { str += encodeURIComponent(item.name) + "=" + encodeURIComponent(item.value) + "&"; });
+      app.router.navigate("/okazje/lists/"+str);*/
+
+    });
+
+    $$('#app').on('click','#filters_form_advanced_toggle', function(e){
+      $$('.page-searchform').toggleClass('advanced');
+      if($$('.page-searchform').hasClass('advanced')){
+        $$('[name="mode"]').val('advanced').change();
+      }else{
+        $$('[name="mode"]').val('simple').change(); 
+      }
+    });
+
+    $$('#app').on('click', '#filters_form_submit', function (e) {
+
+      /*if(e.target.value=='default') $$(e.target).closest('a').removeClass('no-default'); else $$(e.target).closest('a').addClass('no-default');
+      if($$(e.target).hasClass('no-route'))return false;*/
 
       inputs=$$('#filters_form select,#filters_form input');
       var str = "";
       inputs.each(function (i, item) { str += encodeURIComponent(item.name) + "=" + encodeURIComponent(item.value) + "&"; });
       app.router.navigate("/okazje/lists/"+str);
 
-    });
+    });    
 
-    $$('.filters-reset').click(function(){
+    /*$$('.filters-reset').click(function(){
       inputs=$$('#filters_form select');
       inputs.each(function(i,item) {
           $$(item).val('default').addClass('no-route').change().removeClass('no-route');
       });
       app.router.navigate('/home/');
-    });
+    });*/
 
     $$('#app').on('click', '.share', function (e) {
       if (navigator.share) {
@@ -75,32 +97,69 @@ function init(){
       }   
     });
 
+    $$('#app').on('click', '.favorite', function (e) {
+      url = mainView.history[mainView.history.length-1];
+      favobj={
+        title:$$('[data-attr=title]').text(),
+        price:parseInt( $$('[data-attr=price]').text() ),
+        url:url,
+        image:$$('[data-attr=image]').text(),
+      }
+
+      if($$(this).find('i').text()=='favorite'){
+        $$(this).find('i').text('favorite_border');
+        removeFavorite(url);
+        $$('.page-previous a[href="'+url+'"]').hide();
+      }else{
+        $$(this).find('i').text('favorite');
+        addFavorite(favobj)
+        $$('.page-previous a[href="'+url+'"]').show();
+      }
+
+    });
+
     if(!document.location.hash)app.router.navigate('/home/');
 
 }
 
-function updateFilters(data_filters){
-  $$('#filters').html('');
-  for (key in data_filters) {
-      items='';
-      default_title=null;
-      items+='<a href="#" class="item-link smart-select " data-open-in="popup" data-back-on-select="true">';
-      items+='<select name="filter_'+key+'">';
-      for(value in data_filters[key]){
-          title=data_filters[key][value].title_long || data_filters[key][value].title;
-          items+='<option value="'+value+'">'+title+'</option>';
-          if(default_title==null)default_title=title;
-      }
-      items+='</select>';
-      items+='<div class="item-content"><div class="item-inner"><div class="item-title">wybierz</div><div class="item-after">'+default_title+'</div></div></div>';
-      items+='</a>';
+function getFavorites(){
+  favorites = JSON.parse(localStorage.getItem("favorites"));
+  if(favorites == null) return [];
+  return favorites;
+}
 
-    smartSelect = app.smartSelect.create({ 
-      closeOnSelect: true,
-      openIn: 'page',
-      el: $$(items),
-      //view: filtersView
-    });
-    $$('#filters').append(smartSelect.$el);
-  }  
+function setFavorites(favorites){
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+function isFavorited(url){
+  favorites = getFavorites();
+  if( favorites.length>0 ){
+    for(i=0;i<favorites.length;i++){
+      if(favorites[i].url == url) return true;
+    }
+  }
+  return false;
+}
+
+function addFavorite(favobj){
+  if(!isFavorited(favobj.url)){
+    favorites = getFavorites();
+    favorites.unshift(favobj);
+    setFavorites(favorites);
+  }
+}
+
+function removeFavorite(url){
+  favorites = getFavorites();
+  if( favorites.length>0 ){
+    for(i=0;i<favorites.length;i++){
+      if(favorites[i].url == url){
+        favorites.splice(i,1);
+        setFavorites(favorites);
+        return true;
+      } 
+    }
+  }
+  return false;
 }

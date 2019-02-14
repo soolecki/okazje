@@ -15,48 +15,19 @@ routes = [
 
       if(!app.data.list_home){
         app.preloader.show();
-        app.request.getJSON('https://www.tanie-loty.com.pl/?option=com_okazje&view=home&format=raw&action=app',null,function(result){
+        app.request.getJSON('https://www.tanie-loty.com.pl/?option=com_okazje&view=home&format=raw&action=filters',null,function(result){
 
-          app.data.list_home = result['list_home'];
           app.data.data_filters = result['filters'];
-
-          for (var key in app.data.list_home) {
-            var obj=app.data.list_home[key];
-
-            switch(obj._type){
-              case 'pakiety':
-              case 'wycieczki':
-              case 'loty':
-              {
-                url='/okazje/entries'+(obj.url.replace('/component','').replace('/okazje','').replace('//','/') );
-                break;
-              }
-              default:{
-                url='/okazje/lists'+(obj.url.replace('/component','').replace('/okazje','').replace('//','/') );
-              }
-            }
-
-            img_url='https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/storage_local/okazje/'+JSON.parse(obj.images)[0];
-
-            if(obj._type=='koszyki'){
-              card_price='od <b>'+obj.lowest_price+'</b> zł';
-            }else{
-              card_price='<b>'+obj.price+'</b> zł';
-            }
-
-            obj.rendered_html='<a href="'+url+'" class="card"><div data-background="'+img_url+'" class="card-header card-header-image align-items-flex-end lazy lazy-fade-in"></div><div class="card-content card-content-padding"><p><b>'+obj.title+'</b></p></div><div class="card-footer"><span class="card-price">'+card_price+'</span><span class="col button button-fill button-round">Sprawdź</span></div></a>';
-
-          }
 
           resolve(
             {
-              templateUrl: './pages/list.html',
+              templateUrl: './pages/searchform.html',
             },
             {
-              context: { list: result['list_home'], title: 'Okazje' }
+              context: { filters: result['filters'], mode: app.form.getFormData("filters_form").mode }
             }            
           );
-          updateFilters(app.data.data_filters);
+          //setTimeout("updateFilters(app.data.data_filters);",1000);
           app.preloader.hide();
 
         },function(){
@@ -65,7 +36,7 @@ routes = [
       }else{
           resolve(
             {
-              templateUrl: './pages/list.html',
+              templateUrl: './pages/searchform.html',
             },
             {
               context: {
@@ -95,12 +66,13 @@ routes = [
           case 'flight':{tplname='flight.html';break;}
           default:{tplname='package.html';}
         }
-        console.log(result);
 
         resolve( { templateUrl: './pages/'+tplname }, { context: {
           result: result,
-          img_base: 'https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/storage_local/okazje/',
+          img_base: 'https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/',
           shareable: navigator.share,
+          last_list: document.last_list?document.last_list:'/home/',
+          favorited: isFavorited(routeTo.path),
         } });
         app.preloader.hide();
 
@@ -132,8 +104,10 @@ routes = [
 
         resolve( { templateUrl: './pages/'+tplname }, { context: {
           result: result,
-          img_base: 'https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/storage_local/okazje/',
+          img_base: 'https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/',
           shareable: navigator.share,
+          last_list: document.last_list?document.last_list:'/home/'
+
         } });
         app.preloader.hide();
 
@@ -149,6 +123,7 @@ routes = [
     //url: './pages/pakiet.html',
 
     async: function (routeTo, routeFrom, resolve, reject) {
+      document.last_list='/okazje/lists/'+routeTo.params.Url;
       var router = this;
       var app = router.app;
 
@@ -165,7 +140,6 @@ routes = [
 
           for (var key in result.list) {
             var obj=result.list[key];
-
             switch(obj._type){
               case 'pakiety':
               case 'wycieczki':
@@ -186,7 +160,7 @@ routes = [
             }
 
             imgparams='w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80';
-            obj.rendered_html='<a href="'+url+'" class="card"><div data-background="'+obj._image_url.replace('{params}',imgparams).replace('w480-h240-q95-c2x1',imgparams)+'" class="card-header card-header-image align-items-flex-end lazy lazy-fade-in"></div><div class="card-content card-content-padding"><p><b>'+obj.title+'</b></p></div><div class="card-footer"><span class="card-price">'+card_price+'</span><span class="col button button-fill button-round">Sprawdź</span></div></a>';
+            obj.rendered_html='<a href="'+url+'" class="card"><div data-background="'+obj._image_url.replace('{params}',imgparams).replace('w480-h240-q95-c2x1',imgparams)+'" class="card-header card-header-image align-items-flex-end lazy lazy-fade-in"></div><div class="card-content card-content-padding"><p><b>'+obj.title+'</b></p></div><div class="card-footer"><span class="card-price">'+card_price+'</span><span class="col button button-fill">Sprawdź</span></div></a>';
 
           }
 
@@ -208,6 +182,64 @@ routes = [
     }
 
   },    
+
+  {
+    path: '/favorites/',
+    //url: './pages/pakiet.html',
+
+    async: function (routeTo, routeFrom, resolve, reject) {
+      document.last_list='/favorites/';
+      var router = this;
+      var app = router.app;
+        app.preloader.show();
+
+/*        if(routeTo.params.Url.indexOf('&')>0){
+          url = 'https://www.tanie-loty.com.pl/okazje/?'+routeTo.params.Url;  
+        }else{
+          url = 'https://www.tanie-loty.com.pl/okazje/'+routeTo.params.Url+'?app=true';  
+        }*/
+
+        favorites = getFavorites();
+        
+          for (var key in favorites) {
+            var obj=favorites[key];
+/*            switch(obj._type){
+              case 'pakiety':
+              case 'wycieczki':
+              case 'loty':
+              {
+                url=obj._url.replace('/okazje/','/okazje/entries/');
+                break;
+              }
+              default:{
+                url='404';
+              }
+            }*/
+
+/*            if(obj._type=='koszyki'){
+              card_price='od <b>'+obj.lowest_price+'</b> zł';
+            }else{*/
+              card_price='<b>'+obj.price+'</b> zł';
+/*            }*/
+
+            //imgparams='w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80';
+            obj.rendered_html='<a href="'+obj.url+'" class="card"><div data-background="'+obj.image+'" class="card-header card-header-image align-items-flex-end lazy lazy-fade-in"></div><div class="card-content card-content-padding"><p><b>'+obj.title+'</b></p></div><div class="card-footer"><span class="card-price">'+card_price+'</span><span class="col button button-fill">Sprawdź</span></div></a>';
+
+          }
+
+          resolve(
+            {
+              templateUrl: './pages/list.html',
+            },
+            {
+              context: { list: favorites, title: 'Ulubione' }
+            }            
+          );
+          app.preloader.hide();
+
+    }
+
+  },  
 
 /*  {
     path: '/about/',
