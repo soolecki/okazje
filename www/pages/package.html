@@ -1,5 +1,5 @@
 
-<div class="page" data-name="package">
+<div class="page product" data-name="package">
 
   <div class="navbar">
     <div class="navbar-inner">
@@ -9,7 +9,7 @@
           <i class="icon material-icons md-only">arrow_back</i>
         </a>
       </div>
-      <div class="title sliding">Pakiet</div>
+      <!--<div class="title sliding">Pakiet</div>-->
       <div class="right">
         {{#if shareable}}
         <a class="link share icon-only">
@@ -41,7 +41,7 @@
   </div>
 {{/js_if}}
 
-  <div class="page-content">
+  <div class="page-content hide-bars-on-scroll">
     <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.images)[0]"}}"></span>
 
     <span style="display:none" data-attr="image">{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.images)[0]"}}</span>
@@ -92,6 +92,7 @@
     <div class="block-title">Hotel</div>
     <div class="card occ-deal-container occ-hotel">
 
+        <div class="card-header card-header-image lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.hotel.images)[0]"}}"></div>
 
         <div class="card-content card-content-padding">
           {{result.record.hotel.description}}
@@ -103,6 +104,30 @@
         </div>
 
     </div>          
+
+<!-- SAMOCHÓD ----------------->
+
+    {{#js_if "this.result.record.price_car>0"}}
+
+    <div class="block-title">Samochód</div>
+    <div class="card occ-deal-container occ-car">
+
+        <div class="card-header card-header-image lazy lazy-fade-in" data-background="">
+          <img src="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.car.images)[0]"}}">
+        </div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.car.title}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_car}}</b> zł/os.</span>
+          <a href="{{result.record.url_car}}" class="link external" target="_blank">Zobacz auto</a>
+        </div>
+
+    </div>    
+
+    {{/js_if}}
 
 <!-- BILET ----------------->
 

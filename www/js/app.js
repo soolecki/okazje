@@ -43,16 +43,27 @@ $$(document).on('deviceready', function() {
     init();
 });
 
+function onBackKeyDown() {
+  if( $$('.page-current').data('name') == 'home'){
+
+    app.dialog.confirm('Czy na pewno chcesz wyjść?', exitApp, function(){});
+   
+  }
+  return false;
+}
+
+
+function exitApp(){
+   navigator.app.exitApp();
+}
+
 function init(){
+
+    document.addEventListener("backbutton", onBackKeyDown, false);
+
     $$('#app').on('change', '#filters_form select', function (e) {
 
       if(e.target.value=='default') $$(e.target).closest('li').removeClass('no-default'); else $$(e.target).closest('li').addClass('no-default');
-      /*if($$(e.target).hasClass('no-route'))return false;
-
-      inputs=$$('#filters_form select,#filters_form input');
-      var str = "";
-      inputs.each(function (i, item) { str += encodeURIComponent(item.name) + "=" + encodeURIComponent(item.value) + "&"; });
-      app.router.navigate("/okazje/lists/"+str);*/
 
     });
 
@@ -110,16 +121,18 @@ function init(){
         $$(this).find('i').text('favorite_border');
         removeFavorite(url);
         $$('.page-previous a[href="'+url+'"]').hide();
+        app.toast.create({text: 'Usunięto z listy <a href="/favorites/">ulubione</a>.',position: 'bottom',closeTimeout: 3000,}).open()
       }else{
         $$(this).find('i').text('favorite');
         addFavorite(favobj)
         $$('.page-previous a[href="'+url+'"]').show();
+        app.toast.create({text: 'Dodano do listy <a href="/favorites/">ulubione</a>.',position: 'bottom',closeTimeout: 3000,}).open()
       }
 
     });
 
     if(!document.location.hash)app.router.navigate('/home/');
-
+    $$('.favorites-count').text( getFavorites().length );
 }
 
 function getFavorites(){
@@ -130,6 +143,7 @@ function getFavorites(){
 
 function setFavorites(favorites){
   localStorage.setItem("favorites", JSON.stringify(favorites));
+  $$('.favorites-count').text( getFavorites().length );
 }
 
 function isFavorited(url){

@@ -1,5 +1,5 @@
 
-<div class="page" data-name="package">
+<div class="page product" data-name="tour">
 
   <div class="navbar">
     <div class="navbar-inner">
@@ -9,7 +9,7 @@
           <i class="icon material-icons md-only">arrow_back</i>
         </a>
       </div>
-      <div class="title sliding">Wycieczka</div>
+      <!--<div class="title sliding">Wycieczka</div>-->
       <div class="right">
         {{#if shareable}}
         <a class="link share icon-only">
@@ -41,7 +41,7 @@
   </div>
 {{/js_if}}
 
-  <div class="page-content">
+  <div class="page-content hide-bars-on-scroll">
     <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.images)[0]"}}"></span>
 
     <span style="display:none" data-attr="image">{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.images)[0]"}}</span>

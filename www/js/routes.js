@@ -174,7 +174,7 @@ routes = [
               templateUrl: './pages/list.html',
             },
             {
-              context: { list: result.list, title: result.title }
+              context: { list: result.list, title: result.title, type: 'items' }
             }            
           );
           app.preloader.hide();
@@ -237,7 +237,7 @@ routes = [
               templateUrl: './pages/list.html',
             },
             {
-              context: { list: favorites, title: 'Ulubione' }
+              context: { list: favorites, title: 'Ulubione', type: 'favorites' }
             }            
           );
           app.preloader.hide();
