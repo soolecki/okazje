@@ -40,6 +40,7 @@ $$(document).on('DOMContentLoaded', function() {
 });
 
 $$(document).on('deviceready', function() {
+    StatusBar.hide();
     init();
 });
 
