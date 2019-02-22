@@ -15,6 +15,9 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.artwebmedia.okazje"
+        },
+        "phonegap-plugin-local-notification-master": {
+            "PACKAGE_NAME": "com.artwebmedia.okazje"
         }
     },
     "dependent_plugins": {}
