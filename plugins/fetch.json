@@ -23,10 +23,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "phonegap-plugin-local-notification-master": {
+    "phonegap-plugin-local-notification": {
         "source": {
             "type": "registry",
-            "id": "phonegap-plugin-local-notification-master@~1.0.1"
+            "id": "phonegap-plugin-local-notification@~1.0.1"
         },
         "is_top_level": true,
         "variables": {}

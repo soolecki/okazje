@@ -15,7 +15,7 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-console": "1.0.7",
     "cordova-plugin-statusbar": "1.0.1",
-    "phonegap-plugin-local-notification-master": "1.0.1"
+    "phonegap-plugin-local-notification": "1.0.1"
 }
 // BOTTOM OF METADATA
 });
