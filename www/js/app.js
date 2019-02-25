@@ -26,6 +26,17 @@ var app  = new Framework7({
   }
 });
 
+//var filtersView = app.views.create('.panel-left .view');
+
+$$(document).on('DOMContentLoaded', function() { 
+  init();
+});
+
+$$(document).on('deviceready', function() {
+    StatusBar.hide();
+    init();
+});
+
 
 function showNotification(){
   cordova.plugins.notification.local.schedule({
@@ -35,36 +46,7 @@ function showNotification(){
   });
 }
 
-//var filtersView = app.views.create('.panel-left .view');
-
-$$(document).on('DOMContentLoaded', function() { 
-  init();
-});
-
-$$(document).on('deviceready', function() {
-    StatusBar.hide();
-    setTimeout(showNotification,60000);
-    init();
-});
-
-function onBackKeyDown() {
-  app.dialog.confirm('Czy na pewno chcesz wyjść?', exitApp, function(){});
-  if( $$('.page-current').data('name') == 'home'){
-
-    
-   
-  }
-  return false;
-}
-
-
-function exitApp(){
-   navigator.app.exitApp();
-}
-
 function init(){
-
-    document.addEventListener("backbutton", onBackKeyDown, false);
 
     $$('#app').on('change', '#filters_form select', function (e) {
 
