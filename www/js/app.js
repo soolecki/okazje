@@ -32,6 +32,13 @@ var mainView = app.views.create('.view-main', {
   pushState: true
 });
 
+function showNotification(){
+  cordova.plugins.notification.local.schedule({
+    title: 'Sprawdź najnowsze okazje!',
+    text: 'Treść powiadomienia.',
+    foreground: true
+  });
+}
 
 //var filtersView = app.views.create('.panel-left .view');
 
@@ -41,6 +48,7 @@ $$(document).on('DOMContentLoaded', function() {
 
 $$(document).on('deviceready', function() {
     StatusBar.hide();
+    setTimeout(showNotification,60000);
     init();
 });
 

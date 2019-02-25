@@ -79,6 +79,8 @@ routes = [
           last_list: document.last_list?document.last_list:'/home/',
           favorited: isFavorited(routeTo.path),
         } });
+
+        console.log('https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/'+result.image);
         app.preloader.hide();
 
       },function(){
