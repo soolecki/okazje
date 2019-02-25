@@ -26,11 +26,6 @@ var app  = new Framework7({
   }
 });
 
-// Init/Create main view
-var mainView = app.views.create('.view-main', {
-  url: '/home/',
-  pushState: true
-});
 
 function showNotification(){
   cordova.plugins.notification.local.schedule({
@@ -53,9 +48,10 @@ $$(document).on('deviceready', function() {
 });
 
 function onBackKeyDown() {
+  app.dialog.confirm('Czy na pewno chcesz wyjść?', exitApp, function(){});
   if( $$('.page-current').data('name') == 'home'){
 
-    app.dialog.confirm('Czy na pewno chcesz wyjść?', exitApp, function(){});
+    
    
   }
   return false;
@@ -138,6 +134,13 @@ function init(){
         app.toast.create({text: 'Dodano do listy <a href="/favorites/">ulubione</a>.',position: 'bottom',closeTimeout: 3000,}).open()
       }
 
+    });
+
+
+    // Init/Create main view
+    var mainView = app.views.create('.view-main', {
+      url: '/home/',
+      pushState: true
     });
 
     if(!document.location.hash)app.router.navigate('/home/');
