@@ -129,6 +129,10 @@ function init(){
     $$('.favorites-count').text( getFavorites().length );
 }
 
+function inapp(){
+  cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
+}
+
 function getFavorites(){
   favorites = JSON.parse(localStorage.getItem("favorites"));
   if(favorites == null) return [];
