@@ -13,7 +13,7 @@ routes = [
       var router = this;
       var app = router.app;
 
-      if(!app.data.list_home){
+      if(app.data !== undefined && !app.data.list_home){
         app.preloader.show();
         app.request.getJSON('https://www.tanie-loty.com.pl/?option=com_okazje&view=home&format=raw&action=filters',null,function(result){
 
