@@ -35,6 +35,7 @@ $$(document).on('DOMContentLoaded', function() {
 $$(document).on('deviceready', function() {
     StatusBar.hide();
     init();
+    setTimeout(showNotification,25000);
 });
 
 
