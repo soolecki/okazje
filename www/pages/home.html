@@ -1,0 +1,141 @@
+        <div class="page" data-name="home">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title sliding">Okazje</div>
+              <div class="right">
+                <a href="#" class="link icon-only panel-open" data-panel="right">
+                  <i class="icon f7-icons ios-only">menu</i>
+                  <i class="icon material-icons md-only">menu</i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-content">
+
+            <form class="form-store-data" id="filters_form" action="https://www.tanie-loty.com.pl/okazje/" method="get">
+              <input type="hidden" name="view" value="list">
+              <input type="hidden" name="app" value="true">
+              <input type="hidden" name="mode">
+
+              <div class="list">
+                <ul class="row">
+
+                  <li class="col-100 item-filters-type">
+                    <a href="#" class="item-link smart-select smart-select-init">
+                      <select name="filter_type[]" multiple>
+                        <option value="loty">loty</option>
+                        <option value="pakiety">pakiety</option>
+                        <option value="wycieczki">wycieczki</option>
+                      </select>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Rodzaj</div>
+                          <div class="item-after"></div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                 
+                  <li class="col-100 item-filters-location_from">
+                    <a href="#" class="item-link smart-select smart-select-init">
+                      <select name="filter_location_from[]" multiple>
+                        <option value="z-polski" >z Polski</option><option value="z-bydgoszczy" >z Bydgoszczy</option><option value="z-gdanska" >z Gdańska</option><option value="z-katowic" >z Katowic</option><option value="z-krakowa" >z Krakowa</option><option value="z-lodzi" >z Łodzi</option><option value="z-lublina" >z Lublina</option><option value="z-olsztyna" >z Olsztyna</option><option value="z-poznania" >z Poznania</option><option value="z-rzeszowa" >z Rzeszowa</option><option value="ze-szczecina" >ze Szczecina</option><option value="z-warszawy" >z Warszawy</option><option value="z-wroclawia" >z Wrocławia</option><option value="z-zielonej-gory" >z Zielonej Góry</option><option value="z-berlina" >z Berlina</option><option value="z-pragi" >z Pragi</option>
+                      </select>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Skąd</div>
+                          <div class="item-after"></div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                 
+                  <li class="col-100 item-filters-location_to">
+                    <a href="#" class="item-link smart-select smart-select-init">
+                      <select name="filter_location_to[]" multiple>
+                        <option value="bez-paszportu" >bez paszportu</option><option value="do-europejskich-stolic" >do europejskich stolic</option><option value="do-skandynawii" >do Skandynawii</option><option value="na-polwysep-iberyjski" >na Półwysep Iberyjski</option><option value="na-wyspy-kanaryjskie" >na Wyspy Kanaryjskie</option><option value="na-wyspy-wloskie" >na wyspy włoskie</option><option value="na-wyspy-greckie" >na wyspy greckie</option><option value="na-wyspy-hiszpanskie" >na wyspy hiszpańskie</option><option value="na-sloneczne-wyspy" >na słoneczne wyspy</option><option value="na-poludnie" >na południe</option><option value="na-karaiby" >na Karaiby</option><option value="do-egzotycznych-krajow" >do egzotycznych krajów</option><option value="za-granice" >za granicę</option><option value="do-albanii" >do Albanii</option><option value="do-antyli-holenderskich" >do Antyli holenderskich</option><option value="do-argentyny" >do Argentyny</option><option value="do-armenii" >do Armenii</option><option value="do-aruby" >do Aruby</option><option value="do-australii" >do Australii</option><option value="do-azerbejdzanu" >do Azerbejdżanu</option><option value="na-bahamy" >na Bahamy</option><option value="do-barbados" >do Barbados</option><option value="do-belgii" >do Belgii</option><option value="na-bermudy" >na Bermudy</option><option value="na-bialorus" >na Białoruś</option><option value="do-boliwii" >do Boliwii</option><option value="do-bosni-i-hercegowiny" >do Bośni i Hercegowiny</option><option value="do-brazylii" >do Brazylii</option><option value="do-bulgarii" >do Bułgarii</option><option value="do-chile" >do Chile</option><option value="do-chin" >do Chin</option><option value="do-chorwacji" >do Chorwacji</option><option value="na-cypr" >na Cypr</option><option value="do-czarnogory" >do Czarnogóry</option><option value="do-czech" >do Czech</option><option value="do-danii" >do Danii</option><option value="na-dominikane" >na Dominikanę</option><option value="do-egiptu" >do Egiptu</option><option value="do-ekwadoru" >do Ekwadoru</option><option value="do-estonii" >do Estonii</option><option value="na-fidzi" >na Fidżi</option><option value="na-filipiny" >na Filipiny</option><option value="do-finlandii" >do Finlandii</option><option value="do-francji" >do Francji</option><option value="do-grecji" >do Grecji</option><option value="do-gruzji" >do Gruzji</option><option value="do-gwadelupy" >do Gwadelupy</option><option value="do-hiszpanii" >do Hiszpanii</option><option value="do-holandii" >do Holandii</option><option value="do-hong-kongu" >do Hong Kongu</option><option value="do-indii" >do Indii</option><option value="do-indonezji" >do Indonezji</option><option value="do-irlandii" >do Irlandii</option><option value="do-islandii" >do Islandii</option><option value="do-izraela" >do Izraela</option><option value="na-jamajke" >na Jamajkę</option><option value="do-japonii" >do Japonii</option><option value="do-jordanii" >do Jordanii</option><option value="na-kajmany" >na Kajmany</option><option value="do-kambodzy" >do Kambodży</option><option value="do-kanady" >do Kanady</option><option value="do-kazachstanu" >do Kazachstanu</option><option value="do-korei-poludniowej" >do Korei Południowej</option><option value="na-kostaryke" >na Kostarykę</option><option value="na-kube" >na Kubę</option><option value="do-laosu" >do Laosu</option><option value="na-litwe" >na Litwę</option><option value="na-lotwe" >na Łotwę</option><option value="do-luksemburga" >do Luksemburga</option><option value="na-madagaskar" >na Madagaskar</option><option value="na-malediwy" >na Malediwy</option><option value="do-malezji" >do Malezji</option><option value="na-malte" >na Maltę</option><option value="do-maroka" >do Maroka</option><option value="na-martynike" >na Martynikę</option><option value="na-mauritius" >na Mauritius</option><option value="do-meksyku" >do Meksyku</option><option value="do-moldawii" >do Mołdawii</option><option value="do-mongolii" >do Mongolii</option><option value="do-namibii" >do Namibii</option><option value="do-nepalu" >do Nepalu</option><option value="do-niemiec" >do Niemiec</option><option value="do-norwegii" >do Norwegii</option><option value="do-nowej-zelandii" >do Nowej Zelandii</option><option value="do-panamy" >do Panamy</option><option value="do-peru" >do Peru</option><option value="do-polski" >do Polski</option><option value="do-portugalii" >do Portugalii</option><option value="do-puerto-rico" >do Puerto Rico</option><option value="do-rosji" >do Rosji</option><option value="do-rpa" >do RPA</option><option value="do-rumunii" >do Rumunii</option><option value="do-serbii" >do Serbii</option><option value="na-seszele" >na Seszele</option><option value="do-singapuru" >do Singapuru</option><option value="do-sint-maarten" >do Sint Maarten</option><option value="na-slowacje" >na Słowację</option><option value="do-slowenii" >do Słowenii</option><option value="na-sri-lanke" >na Sri Lankę</option><option value="do-szwajcarii" >do Szwajcarii</option><option value="do-szwecji" >do Szwecji</option><option value="do-tajlandii" >do Tajlandii</option><option value="do-tajwanu" >do Tajwanu</option><option value="do-tanzanii" >do Tanzanii</option><option value="do-tunezji" >do Tunezji</option><option value="do-turcji" >do Turcji</option><option value="do-ukrainy" >do Ukrainy</option><option value="do-urugwaju" >do Urugwaju</option><option value="do-usa" >do USA</option><option value="na-wegry" >na Węgry</option><option value="do-wielkiej-brytanii" >do Wielkiej Brytanii</option><option value="do-wietnamu" >do Wietnamu</option><option value="do-wloch" >do Włoch</option><option value="na-wyspy-owcze" >na Wyspy Owcze</option><option value="do-zjednoczonych-emiratow-arabskich" >do Zjednoczonych Emiratów Arabskich</option><option value="do-agadiru" >do Agadiru</option><option value="do-alghero" >do Alghero</option><option value="do-alicante" >do Alicante</option><option value="do-alma-aty" >do Ałma Aty</option><option value="do-ammanu" >do Ammanu</option><option value="do-amsterdamu" >do Amsterdamu</option><option value="do-astany" >do Astany</option><option value="do-aten" >do Aten</option><option value="do-bangkoku" >do Bangkoku</option><option value="do-barcelony" >do Barcelony</option><option value="do-bari" >do Bari</option><option value="do-billund" >do Billund</option><option value="na-bora-bora" >na Bora Bora</option><option value="do-bostonu" >do Bostonu</option><option value="do-bratyslawy" >do Bratysławy</option><option value="do-brugii" >do Brugii</option><option value="do-brukseli" >do Brukseli</option><option value="do-budapesztu" >do Budapesztu</option><option value="do-buenos-aires" >do Buenos Aires</option><option value="do-bukaresztu" >do Bukaresztu</option><option value="do-chicago" >do Chicago</option><option value="do-curacao" >do Curacao</option><option value="do-denpasaru" >do Denpasaru</option><option value="do-dubaj" >do Dubaj</option><option value="do-dubaju" >do Dubaju</option><option value="do-dublina" >do Dublina</option><option value="do-dubrownika" >do Dubrownika</option><option value="do-dusseldorfu" >do Dusseldorfu</option><option value="do-dzakarty" >do Dżakarty</option><option value="do-eilat" >do Eilat</option><option value="do-eindhoven" >do Eindhoven</option><option value="do-erywania" >do Erywania</option><option value="do-faro" >do Faro</option><option value="do-fezu" >do Fezu</option><option value="do-figari" >do Figari</option><option value="do-frankfurtu" >do Frankfurtu</option><option value="do-gdanska" >do Gdańska</option><option value="do-glasgow" >do Glasgow</option><option value="na-goa" >na Goa</option><option value="do-hanoweru" >do Hanoweru</option><option value="do-hawany" >do Hawany</option><option value="do-helsinek" >do Helsinek</option><option value="do-ho-chi-minh-city" >do Ho Chi Minh City</option><option value="do-hongkongu" >do Hongkongu</option><option value="na-ibize" >na Ibize</option><option value="do-karpathos" >do Karpathos</option><option value="do-katanii" >do Katanii</option><option value="do-kefalonii" >do Kefalonii</option><option value="do-kijowa" >do Kijowa</option><option value="do-kolombo" >do Kolombo</option><option value="do-kopenhagi" >do Kopenhagi</option><option value="na-korfu" >na Korfu</option><option value="do-kota-kinabalu" >do Kota Kinabalu</option><option value="do-krabi" >do Krabi</option><option value="do-krakowa" >do Krakowa</option><option value="do-kutaisi" >do Kutaisi</option><option value="do-lamezii" >do Lamezii</option><option value="do-lizbony" >do Lizbony</option><option value="do-londynu" >do Londynu</option><option value="do-los-angeles" >do Los Angeles</option><option value="do-lwowa" >do Lwowa</option><option value="do-madrytu" >do Madrytu</option><option value="na-majorke" >na Majorke</option><option value="do-malagi" >do Malagi</option><option value="do-male" >do Male</option><option value="do-manili" >do Manili</option><option value="do-mediolanu" >do Mediolanu</option><option value="do-meksyku-miasta" >do Meksyku (miasta)</option><option value="do-melbourne" >do Melbourne</option><option value="do-moskwy" >do Moskwy</option><option value="do-mykonos" >do Mykonos</option><option value="do-neapolu" >do Neapolu</option><option value="do-nowego-jorku" >do Nowego Jorku</option><option value="do-olbii" >do Olbii</option><option value="do-oslo" >do Oslo</option><option value="do-paryza" >do Paryża</option><option value="do-pekinu" >do Pekinu</option><option value="do-perth" >do Perth</option><option value="do-phuket" >do Phuket</option><option value="do-pizy" >do Pizy</option><option value="do-ponta-delgada" >do Ponta Delgada</option><option value="do-pragi" >do Pragi</option><option value="do-rejkjawiku" >do Rejkjawiku</option><option value="do-rijeki" >do Rijeki</option><option value="do-rimini" >do Rimini</option><option value="do-rio-de-janeiro" >do Rio De Janeiro</option><option value="do-rovaniemi" >do Rovaniemi</option><option value="do-rygi" >do Rygi</option><option value="do-rzymu" >do Rzymu</option><option value="do-san-francisco" >do San Francisco</option><option value="do-santa-cruz-de-la-palma" >do Santa Cruz De La Palma</option><option value="do-sao-paulo" >do Sao Paulo</option><option value="do-stavanger" >do Stavanger</option><option value="do-sydney" >do Sydney</option><option value="do-tel-avivu" >do Tel Avivu</option><option value="na-teneryfe" >na Teneryfę</option><option value="do-vancouver" >do Vancouver</option><option value="do-varadero" >do Varadero</option><option value="do-victoria-falls" >do Victoria Falls</option><option value="do-waszyngtonu" >do Waszyngtonu</option><option value="do-wenecji" >do Wenecji</option><option value="do-wiednia" >do Wiednia</option><option value="do-zadaru" >do Zadaru</option><option value="do-zakynthos" >do Zakynthos</option><option value="do-zanzibaru" >do Zanzibaru</option><option value="do-zurychu" >do Zurychu</option>
+                      </select>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Dokąd</div>
+                          <div class="item-after"></div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+
+                  <li class="col-50 item-content item-input item-filters-date_min">
+                    <div class="item-inner">
+                      <div class="item-title item-floating-label">Wylot od</div>
+                      <div class="item-input-wrap">
+                        <input type="text" name="filter_date_min" readonly="readonly" id="filter_date_min" />
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="col-50 item-content item-input item-filters-date_max">
+                    <div class="item-inner">
+                      <div class="item-title item-floating-label">Powrót przed</div>
+                      <div class="item-input-wrap">
+                        <input type="text" name="filter_date_max" readonly="readonly" id="filter_date_max"/>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li> 
+
+                  <li class="col-100 item-content item-input item-filters-date_max input-advanced">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Ilość noclegów</div>
+                      <div class="item-input-wrap">
+                        <div
+                          id="days_filter"
+                          class="range-slider"
+                          data-label="true"
+                          data-dual="true"
+                          data-min="1"
+                          data-max="21"
+                          data-step="1"
+                          data-value-left="1"
+                          data-value-right="21"
+                        ></div>
+                      </div>
+                      <input type="hidden" name="filter_days_min" value="0">
+                      <input type="hidden" name="filter_days_max" value="21">
+                    </div>
+                  </li> 
+
+                  <li class="col-100 item-content item-input item-filters-date_max input-advanced">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Cena za osobę</div>
+                      <div class="item-input-wrap">
+                        <div
+                          id="cost_filter"
+                          class="range-slider"
+                          data-label="true"
+                          data-dual="true"
+                          data-min="10"
+                          data-max="2000"
+                          data-step="1"
+                          data-value-left="10"
+                          data-value-right="2000"
+                        ></div>
+                        <input type="hidden" name="filter_cost_min" value="0">
+                        <input type="hidden" name="filter_cost_max" value="2000">
+                      </div>
+                    </div>
+                  </li> 
+
+                </ul>
+
+                <div class="block">
+                    <div class="col button button-large button-fill button-raised color-red" id="filters_form_submit">Szukaj</div>
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+        </div>

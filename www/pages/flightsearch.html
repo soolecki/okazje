@@ -1,0 +1,73 @@
+<div class="page" data-name="flightsearch">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="title sliding">Loty</div>
+      <div class="right">
+        <a href="#" class="link icon-only panel-open" data-panel="right">
+          <i class="icon f7-icons ios-only">menu</i>
+          <i class="icon material-icons md-only">menu</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="page-content">
+    
+    <form class="form-store-data" id="flight_search" action="https://bluesky.tanie-loty.com.pl/complete_informations/fill_flight_data" method="post">
+
+      <div class="list">
+        <ul>
+
+        <label class="item-checkbox item-content">
+          <input type="checkbox" name="demo-checkbox" value="Books" checked="checked">
+          <i class="icon icon-checkbox"></i>
+          <div class="item-inner">
+            <div class="item-title">W obie strony</div>
+          </div>
+        </label>
+
+          <li>
+            <a class="item-link smart-select smart-select-init" href="#" id="search_flight_from">
+              <input type="hidden" name="data[Multisearches][from][1]">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Skąd?</div>
+                  <div class="item-after"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="item-link smart-select smart-select-init" href="#" id="search_flight_to">
+              <input type="hidden" name="data[Multisearches][to][1]">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Dokąd</div>
+                  <div class="item-after"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="item-content item-input item-filters-date_min">
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Wybierz daty</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Wybierz daty" readonly="readonly" id="demo-calendar-range"/>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+  
+      <div class="block">
+        <input type="submit" value="szukaj" class="col button button-large button-fill button-raised color-blue">
+      </div>
+
+    </form>
+
+  </div>
+</div>
+

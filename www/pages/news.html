@@ -1,0 +1,30 @@
+<div class="page" data-name="flightsearch">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="title sliding">Newsy</div>
+      <div class="right">
+        <a href="#" class="link icon-only panel-open" data-panel="right">
+          <i class="icon f7-icons ios-only">menu</i>
+          <i class="icon material-icons md-only">menu</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="page-content">
+
+	{{#each news}}
+		<div class="card news-card">
+		  <div style="background-image:url({{image_url}})" class="card-header align-items-flex-end"><span>{{title}}</span></div>
+		  <div class="card-content card-content-padding">
+		    <!--<p class="date">Posted on January 21, 2015</p>-->
+		    <p>{{excerpt}}</p>
+		  </div>
+		  <div class="card-footer">
+		  	<a href="{{permalink}}" class="link external">Czytaj</a></div>
+		  	{{#if shareable}}<a href="#" class="link">Udostępnij</a>{{/if}}
+		</div>
+	{{/each}}
+
+		
+  </div>
+</div>

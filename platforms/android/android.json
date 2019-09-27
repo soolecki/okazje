@@ -1,0 +1,94 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "res/xml/config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"LocalNotifications\"><param name=\"android-package\" value=\"com.adobe.phonegap.notification.LocalNotifications\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/manifest/application": [
+            {
+              "xml": "<activity android:exported=\"true\" android:name=\"com.adobe.phonegap.notification.NotificationHandlerActivity\" android:permission=\"${applicationId}.permission.PushHandlerActivity\" />",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    },
+    "phonegap-plugin-local-notification": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "phonegap-plugin-local-notification.Notification",
+      "file": "plugins/phonegap-plugin-local-notification/www/notification.js",
+      "pluginId": "phonegap-plugin-local-notification",
+      "clobbers": [
+        "Notification"
+      ]
+    },
+    {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open",
+        "window.open"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-console": "1.0.7",
+    "cordova-plugin-statusbar": "1.0.1",
+    "cordova-plugin-whitelist": "1.2.2",
+    "phonegap-plugin-local-notification": "1.0.1",
+    "cordova-plugin-inappbrowser": "3.0.0"
+  }
+}

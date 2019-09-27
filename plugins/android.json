@@ -1,24 +1,27 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
     },
-    "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.artwebmedia.okazje"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.artwebmedia.okazje"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.artwebmedia.okazje"
-        },
-        "phonegap-plugin-local-notification": {
-            "PACKAGE_NAME": "com.artwebmedia.okazje"
-        }
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
     },
-    "dependent_plugins": {}
+    "phonegap-plugin-local-notification": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.artwebmedia.okazje"
+    }
+  },
+  "dependent_plugins": {}
 }

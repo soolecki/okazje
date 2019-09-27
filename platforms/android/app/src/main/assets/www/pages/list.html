@@ -1,0 +1,34 @@
+<div class="page products_list" data-name="list">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left">
+        <a href="/home/" class="link icon-only">
+          <i class="icon f7-icons ios-only">arrow_left</i>
+          <i class="icon material-icons md-only">arrow_back</i>
+        </a>
+      </div>
+      <div class="title sliding">{{title}}</div>
+    </div>
+  </div>
+
+  <div class="page-content page-list" style="display: flex;flex-wrap: wrap;width: 100%;{{#js_if "this.list.length==0"}}align-content:center;text-align:center{{/js_if}}">
+
+      {{#each list}} 
+        {{rendered_html}}
+      {{else}}
+      
+      <div style="margin-bottom: 36px;padding: 0 30px;">
+        {{#js_if "this.type=='favorites'"}}
+          <i class="icon material-icons" style="font-size: 120px;color: #d7e8f2;">favorite_border</i>
+          <h2>Trochę tu pusto...</h2><p>Aby dodać coś do tej listy, na stronie okazji kliknij ikonę serduszka.</p>
+        {{else}}
+          <i class="icon material-icons" style="font-size: 120px;color: #d7e8f2;">flight</i>
+          <h2>Nie znaleźliśmy...</h2><p>Nie mamy takich okazji. Spróbuj zminić lub usunąć niektóre kryteria wyszukiwania.</p>
+        {{/js_if}}
+      </div>      
+
+      {{/each}}
+
+
+  </div>

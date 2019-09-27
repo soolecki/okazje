@@ -1,0 +1,21 @@
+<div class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="title">Routable Tabs</div>
+    </div>
+  </div>
+  <div class="toolbar tabbar toolbar-bottom">
+    <div class="toolbar-inner">
+      <!-- additional "data-route-tab-id" must match to tab's ID in the specified routes -->
+      <a href="/" class="tab-link" data-route-tab-id="tab-1">Okazje</a>
+      <a href="/flights/" class="tab-link" data-route-tab-id="tab-2">Loty</a>
+      <a href="/news/" class="tab-link" data-route-tab-id="tab-3">Aktualności</a>
+    </div>
+  </div>
+  <!-- Additional "tabs-routable" is required on tabs -->
+  <div class="tabs tabs-routable">
+    <div class="tab page-content" id="okazje-search-from"></div>
+    <div class="tab page-content" id="flights-search-from"></div>
+    <div class="tab page-content" id="news-feed"></div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.artwebmedia.okazje" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="LocalNotifications">
+        <param name="android-package" value="com.adobe.phonegap.notification.LocalNotifications" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <name>Okazje</name>
+    <description>Najlepsze okazje w jednym miejscu. Wybierz swoją!</description>
+    <author email="sebastian.solecki@artweb-medial.com" href="https://artweb-medial.com">Apache Cordova Team</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon height="16" src="www/icons/favicon-16x16.png" width="16" />
+    <icon height="32" src="www/icons/favicon-32x32.png" width="32" />
+    <icon height="96" src="www/icons/favicon-96x96.png" width="96" />
+    <icon height="144" src="www/icons/favicon-144x144.png" width="144" />
+    <icon height="192" src="www/icons/favicon-192x192.png" width="192" />
+    <icon height="512" src="www/icons/favicon-512x512.png" width="512" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="android-minSdkVersion" value="19" />
+</widget>

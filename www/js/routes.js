@@ -1,58 +1,58 @@
-routes = [
-  /*{
-    path: '/',
-    url: './index.html',
-  },*/
-
+  routes = [
   {
-    path: '/home/',
-    options: {
-      animate: false,
-    },    
-    async: function (routeTo, routeFrom, resolve, reject) {
-      var router = this;
-      var app = router.app;
+    path: '/',
+    url: './pages/home.html',
+    on: {
+      pageInit:function (e, page){
 
-      if(app.data !== undefined && !app.data.list_home){
-        app.preloader.show();
-        app.request.getJSON('https://www.tanie-loty.com.pl/?option=com_okazje&view=home&format=raw&action=filters',null,function(result){
-
-          app.data.data_filters = result['filters'];
-
-          if( app.form.getFormData("filters_form") ){
-            mode = app.form.getFormData("filters_form").mode;
-          }
-          if(typeof mode == 'undefined')mode='simple';
-
-          resolve(
-            {
-              templateUrl: './pages/searchform.html',
-            },
-            {
-              context: { filters: result['filters'], mode: mode }
-            }            
-          );
-          //setTimeout("updateFilters(app.data.data_filters);",1000);
-          app.preloader.hide();
-
-        },function(){
-            //error 
+        var filter_date_min = app.calendar.create({
+          inputEl: '[name="filter_date_min"]',
+          closeOnSelect: true
         });
-      }else{
-          resolve(
-            {
-              templateUrl: './pages/searchform.html',
-            },
-            {
-              context: {
-                list: app.data.list_home,
-              }
-            }            
-          );        
-      }
+        var filter_date_max = app.calendar.create({
+          inputEl: '[name="filter_date_max"]',
+          closeOnSelect: true
+        });
 
-    },
+        filter_days_min = parseInt( $$('[name=filter_days_min]').val() ) || 1;
+        filter_days_max = parseInt( $$('[name=filter_days_max]').val() ) || 21;
+
+        var days_filter = app.range.create({
+            el: '#days_filter',
+            value: [filter_days_min,filter_days_max],
+            on:{
+              change:function(r){
+                $$('[name=filter_days_min]').val(r.value[0]).change();
+                $$('[name=filter_days_max]').val(r.value[1]).change();
+              }
+            }
+          });
+
+        filter_cost_min = parseInt( $$('[name=filter_cost_min]').val() ) || 0;
+        filter_cost_max = parseInt( $$('[name=filter_cost_max]').val() ) || 2000;
+
+        var cost_filter = app.range.create({
+            el: '#cost_filter',
+            value: [filter_cost_min,filter_cost_max],
+            on:{
+              change:function(r){
+                $$('[name=filter_cost_min]').val(r.value[0]).change();
+                $$('[name=filter_cost_max]').val(r.value[1]).change();
+              }
+            }
+          });
+
+      },
+      pageAfterIn: function (e, page) {  
+
+        // może inicjowanie wyżej, a tutaj tylko ustawianie wartość?
+
+
+      },
+    }
+
   },
+
 
   {
     path: '/okazje/entries/:Cart/:Url',
@@ -80,11 +80,12 @@ routes = [
           favorited: isFavorited(routeTo.path),
         } });
 
-        console.log('https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/'+result.image);
+        //console.log('https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/'+result.image);
         app.preloader.hide();
 
       },function(){
-          //error 
+          app.preloader.hide();
+          app.dialog.alert('Przepraszamy', 'Wybrana przez Ciebie okazje nie istnieje.');          
       });
     }
 
@@ -119,7 +120,8 @@ routes = [
         app.preloader.hide();
 
       },function(){
-          //error 
+          app.preloader.hide();
+          app.dialog.alert('Przepraszamy', 'Wybrana przez Ciebie okazje nie istnieje.'); 
       });
     }
 
@@ -161,9 +163,9 @@ routes = [
             }
 
             if(obj._type=='koszyki'){
-              card_price='od <b>'+obj.lowest_price+'</b> zł';
+              card_price='od&nbsp;<b>'+obj.lowest_price+'</b>&nbsp;zł';
             }else{
-              card_price='<b>'+obj.price+'</b> zł';
+              card_price='<b>'+obj.price+'</b>&nbsp;zł';
             }
 
             imgparams='w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80';
@@ -190,81 +192,114 @@ routes = [
 
   },    
 
+
+
+
   {
-    path: '/favorites/',
-    //url: './pages/pakiet.html',
+    path: '/about/',
+    url: './pages/about.html',
+  },
+  {
+    path: '/flightsearch/',
+    url: './pages/flightsearch.html',
 
-    async: function (routeTo, routeFrom, resolve, reject) {
-      document.last_list='/favorites/';
-      var router = this;
-      var app = router.app;
-        app.preloader.show();
 
-/*        if(routeTo.params.Url.indexOf('&')>0){
-          url = 'https://www.tanie-loty.com.pl/okazje/?'+routeTo.params.Url;  
-        }else{
-          url = 'https://www.tanie-loty.com.pl/okazje/'+routeTo.params.Url+'?app=true';  
-        }*/
+    on: {
+      pageInit: function(){
 
-        favorites = getFavorites();
-        
-          for (var key in favorites) {
-            var obj=favorites[key];
-/*            switch(obj._type){
-              case 'pakiety':
-              case 'wycieczki':
-              case 'loty':
-              {
-                url=obj._url.replace('/okazje/','/okazje/entries/');
-                break;
-              }
-              default:{
-                url='404';
-              }
-            }*/
-
-/*            if(obj._type=='koszyki'){
-              card_price='od <b>'+obj.lowest_price+'</b> zł';
-            }else{*/
-              card_price='<b>'+obj.price+'</b> zł';
-/*            }*/
-
-            //imgparams='w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80';
-            obj.rendered_html='<a href="'+obj.url+'" class="card"><div data-background="'+obj.image+'" class="card-header card-header-image align-items-flex-end lazy lazy-fade-in"></div><div class="card-content card-content-padding"><p><b>'+obj.title+'</b></p></div><div class="card-footer"><span class="card-price">'+card_price+'</span><span class="col button button-fill">Sprawdź</span></div></a>';
-
-          }
-
-          resolve(
-            {
-              templateUrl: './pages/list.html',
+        var search_flight_from = app.autocomplete.create({
+          openIn: 'popup',
+          openerEl: '#search_flight_from',
+          closeOnSelect: true,
+          autoFocus: true,
+          source: function (query, render) {
+            var results = [];
+            if (query.length === 0) {
+              render(results);
+              return;
+            }
+            for (var i = 0; i < window.airports.length; i++) {
+              if (window.airports[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(window.airports[i]);
+            }
+            render(results);
+          },
+          on: {
+            change: function (value) {
+              $$('#search_flight_from').find('.item-after').text(value[0]);
+              $$('#search_flight_from').find('input').val(value[0]);
             },
-            {
-              context: { list: favorites, title: 'Ulubione', type: 'favorites' }
-            }            
-          );
-          app.preloader.hide();
+          },
+        });        
 
+        var search_flight_to = app.autocomplete.create({
+          openIn: 'popup',
+          openerEl: '#search_flight_to',
+          closeOnSelect: true,
+          autoFocus: true,
+          source: function (query, render) {
+            var results = [];
+            if (query.length === 0) {
+              render(results);
+              return;
+            }
+            for (var i = 0; i < window.airports.length; i++) {
+              if (window.airports[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(window.airports[i]);
+            }
+            render(results);
+          },
+          on: {
+            change: function (value) {
+              $$('#search_flight_to').find('.item-after').text(value[0]);
+              $$('#search_flight_to').find('input').val(value[0]);
+            },
+          },
+        });        
+
+        var calendarRange = app.calendar.create({
+          inputEl: '#demo-calendar-range',
+          dateFormat: 'dd-mm-yyyy',
+          rangePicker: true,
+          closeOnSelect: true,
+        });   
+      }
     }
 
-  },  
 
-/*  {
-    path: '/about/',
-    url: './pages/temp-content.html',
+
   },
   {
-    path: '/form/',
-    url: './pages/form.html',
+    path: '/news/:Id',
+
+    async: function (routeTo, routeFrom, resolve, reject) {
+      var router = this;
+      var app = router.app;
+
+      app.preloader.show();
+      app.request.getJSON('https://www.tanie-loty.com.pl/czytelnia/wp-json/tlplugin/v1/news/'+routeTo.params.Id,null,function(result){
+        resolve( { templateUrl: './pages/news.html', }, { context: {
+          news: result.news,
+          page: routeTo.params.Id,
+          shareable: navigator.share,
+          img_base: 'https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/',
+        } });
+
+        app.preloader.hide();
+
+      },function(){
+          app.preloader.hide();
+          app.dialog.alert('Przepraszamy', 'Wybrana przez Ciebie strona nie istnieje.');          
+      });
+    }    
   },
   // Page Loaders & Router
-  {
+/*  {
     path: '/page-loader-template7/:user/:userId/:posts/:postId/',
     templateUrl: './pages/page-loader-template7.html',
   },
   {
     path: '/page-loader-component/:user/:userId/:posts/:postId/',
     componentUrl: './pages/page-loader-component.html',
-  },
+  },*/
   {
     path: '/request-and-load/user/:userId/',
     async: function (routeTo, routeFrom, resolve, reject) {
@@ -314,7 +349,7 @@ routes = [
         );
       }, 1000);
     },
-  },*/
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     path: '(.*)',

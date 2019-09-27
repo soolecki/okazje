@@ -1,0 +1,165 @@
+/* Your app styles here */
+
+body {background:#FFF}
+
+#app{max-width: 960px;margin: 0 auto;background:#FFF}
+
+h1{font-size:1.3em;line-height: 1.3em;}
+
+a.occ-item{color:#000;}
+
+.page[data-name="home"] .page-content{background:#73b6e1 url(../okazje-bg.jpg);background-size:cover;background-position: center;}
+
+.page-content{align-content: flex-start;background:#FFF;background:linear-gradient(to bottom, #ffffff 40%,#d7e8f2 100%);}
+
+.page-searchform{align-content: center;align-items: center;background:#73b6e1 url(../okazje-bg.jpg);background-size:cover;background-position: center;}
+.page-searchform h1{transition: all 300ms ease-in-out;max-width:300px;max-height:250px;overflow:hidden;margin:0 auto 24px;text-align: center;font-size:2em;color:#FFF;text-shadow: 0 1px 1px rgba(0,0,0,0.4);font-weight:normal;}
+.page-searchform.advanced h1{max-height:0;margin-bottom:0;}
+.page-searchform .list{margin:0 auto 16px;}
+.page-searchform .list .item-content{padding-left:0;}
+.page-searchform .list .item-inner{padding:0;}
+.page-searchform .list select{height:48px;padding:0 16px;}
+.page-searchform .input-dropdown-wrap:before, .page-searchform .input-dropdown:before{right:14px;}
+.page-searchform .f7-icons{font-size:12px;}
+.page-searchform .input-dropdown-wrap:after, .page-searchform .input-dropdown:after{display:none;}
+
+#filters_form ul{min-width:280px;max-width:560px;display: flex;flex-wrap: wrap;justify-content: space-evenly;margin:0 20px;}
+#filters_form ul:before{display:none;}
+#filters_form ul li{background: #FFF;margin-bottom:15px;transition: max-height 300ms ease-in-out,margin-bottom 300ms ease-in-out,opacity 300ms ease-in-out;border-radius: 30px;opacity:0.85;box-shadow: 0 1px 3px rgba(0,0,0,0.3);;min-width: 275px;order:0;}
+#filters_form ul li.item-filters-type,#filters_form ul li.item-filters-duration,#filters_form ul li.item-filters-occasion,#filters_form ul li.item-filters-price_max{order:1;max-height:0;margin-bottom:0;overflow:hidden;opacity:0}
+.page-searchform.advanced #filters_form li{order:0;max-height:50px;margin-bottom:5px;opacity:0.85;}
+
+@media screen and (min-width: 590px){
+	.item-filters-type,.item-filters-duration{order:-1!important;}
+}
+
+#filters_form li select{color:#999;}
+#filters_form li.no-default select{color:#000;}
+
+#filters_form_advanced_toggle{color:#000;}
+#filters_form_advanced_toggle .less{display:none;}
+.page-searchform.advanced #filters_form_advanced_toggle .less{display:block;}
+.page-searchform.advanced #filters_form_advanced_toggle .more{display:none;}
+#filters_form_submit{background-color:#d3223a;border-bottom: 4px solid #bf002e;color:#FFF;margin:8px;max-width: 200px;margin: 0 auto;font-weight: bold;font-size: 18px;box-shadow: 0 0 10px rgba(255,235,235,0.4);border-radius:4px;}
+
+
+.md .navbar{background:#5cacd7;font-size:16px;}
+.md .product .navbar{background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)}
+.md .navbar:after{display:none;}
+.md .navbar .title{margin:0;}
+
+.md .product .navbar~* .page-content, .md .product .navbar~.page-content{padding-top:0;}
+/*.md .products_list .navbar~* .page-content, .md .products_list .navbar~.page-content{padding-top:42px;}*/
+
+.md .toolbar {background: #5cacd7;}
+.md .block {margin: 16px 0}
+.md .button{padding:0 16px;}
+.md .button.button-active, .md .button.button-fill, .md .button.button-fill-md, .md .button.tab-link-active{color: #000;/*border: 1px solid #dedede;*/background:#FFF;border-radius:16px;}
+.md .page-list a .card-content p{color:#000;}
+.md .page-list .card-content-padding{padding:8px;}
+.md .card-header{background-size:cover;border-radius: 16px 16px 0 0;}
+.md .card-footer{padding:6px;border-radius: 0 0 16px 16px;}
+.md .block-title{margin:32px 16px 8px;}
+.md .navbar .right:first-child{right:0;}
+
+.card{border-radius: 20px;}
+.page-list .card{width:calc(100% - 24px);display:block;border-radius:16px;margin: 12px 12px 2px;}
+.card-header-image{height:22vh;background-position: center;padding:0!important;background-size:cover;}
+.occ-deal-container .card-header-image{height:32vh;}
+.card-header-image-caption{padding:40px 16px 8px;width: 100%;background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);color: #FFF;font-weight: bold;}
+
+.card-header:after{background-color: #3a3a3a;}
+.card-footer{background:#f8f8f8;}
+
+.card-price b{color:#000;font-size:1.4em}
+.card-footer .card-price{padding:0 10px}
+
+.occ-deal-pic {height: 36vh;width: 100%;display: block;background-position: center;background-size:cover;}
+.occ-deal-container .card-header .carrier-logo{height:30px;}
+.occ-title{font-weight: bold;font-size: 16px;}
+.occ-title .occ-iata{font-size:14px;color:#999;}
+
+.list .smart-select .item-title{display:none;}
+.smart-select .item-after{max-width: 100%;}
+.smart-select.no-default {font-weight: bold}
+.smart-select.no-default .item-after{color:#000}
+
+.favorites{background: #0081c7;margin-top: 15px;color: #FFF!important;}
+
+.md .fab-buttons a, .md .fab>a{box-shadow:none;background:#0000003d;}
+
+/*body {background:#FFF}
+
+#app{max-width: 960px;margin: 0 auto;background:#FFF}
+
+h1{font-size:1.3em;line-height: 1.3em;}
+
+a.occ-item{color:#000;}
+
+
+.page-content{align-content: flex-start;background:#FFF;}
+
+.page-searchform{align-content: center;align-items: center;background:#73b6e1 url(../okazje-bg.jpg);background-size:cover;background-position: center;}
+.page-searchform h1{transition: all 300ms ease-in-out;max-width:300px;max-height:250px;overflow:hidden;margin:0 auto 24px;text-align: center;font-size:2em;color:#FFF;text-shadow: 0 1px 1px rgba(0,0,0,0.4);font-weight:normal;}
+.page-searchform.advanced h1{max-height:0;margin-bottom:0;}
+.page-searchform .list{margin:0 auto 16px;}
+.page-searchform .list .item-content{padding-left:0;}
+.page-searchform .list .item-inner{padding:0;}
+.page-searchform .list select{height:48px;padding:0 16px;}
+.page-searchform .input-dropdown-wrap:before, .page-searchform .input-dropdown:before{right:14px;}
+.page-searchform .f7-icons{font-size:12px;}
+.page-searchform .input-dropdown-wrap:after, .page-searchform .input-dropdown:after{display:none;}
+
+#filters_form ul{min-width:280px;max-width:560px;display: flex;flex-wrap: wrap;justify-content: space-evenly;margin:0 20px;}
+#filters_form ul:before{display:none;}
+#filters_form ul li{background: #FFF;margin-bottom:15px;transition: max-height 300ms ease-in-out,margin-bottom 300ms ease-in-out,opacity 300ms ease-in-out;border-radius: 30px;opacity:0.85;box-shadow: 0 1px 3px rgba(0,0,0,0.3);;min-width: 275px;order:0;}
+#filters_form ul li.item-filters-type,#filters_form ul li.item-filters-duration,#filters_form ul li.item-filters-occasion,#filters_form ul li.item-filters-price_max{order:1;max-height:0;margin-bottom:0;overflow:hidden;opacity:0}
+.page-searchform.advanced #filters_form li{order:0;max-height:50px;margin-bottom:5px;opacity:0.85;}
+
+@media screen and (min-width: 590px){
+	.item-filters-type,.item-filters-duration{order:-1!important;}
+}
+
+#filters_form li select{color:#999;}
+#filters_form li.no-default select{color:#000;}
+
+#filters_form_advanced_toggle{color:#000;}
+#filters_form_advanced_toggle .less{display:none;}
+.page-searchform.advanced #filters_form_advanced_toggle .less{display:block;}
+.page-searchform.advanced #filters_form_advanced_toggle .more{display:none;}
+#filters_form_submit{background-color:#d3223a;border-bottom: 4px solid #bf002e;color:#FFF;margin:8px;max-width: 200px;margin: 0 auto;font-weight: bold;font-size: 18px;box-shadow: 0 0 10px rgba(255,235,235,0.4);}
+
+
+.md .navbar{background:#0486ff}
+.md .toolbar {background: #0486ff;}
+.md .block {margin: 16px 0}
+.md .button{padding:0 16px;}
+.md .button.button-active, .md .button.button-fill, .md .button.button-fill-md, .md .button.tab-link-active{background-color:#ff0441}
+.md .page-list a .card-content p{color:#000;}
+.md .page-list .card-content-padding{padding:8px;}
+.md .card-header{background-size:cover}
+.md .card-footer{padding:4px;}
+.md .block-title{margin:32px 16px 8px;}
+.md .navbar .right:first-child{right:0;}
+
+.page-list .card{width:100%;}
+.card-header-image{height:22vh;background-position: center;padding:0!important;background-size:cover;}
+.occ-deal-container .card-header-image{height:32vh;}
+.card-header-image-caption{padding:40px 16px 8px;width: 100%;background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);color: #FFF;font-weight: bold;}
+
+.card-header:after{background-color: #3a3a3a;}
+.card-footer{background:#f8f8f8;}
+
+.card-price b{color:#000;font-size:1.4em}
+.card-footer .card-price{padding:0 10px}
+
+.occ-deal-pic {height: 30vh;width: 100%;display: block;background-position: center;background-size:cover;}
+.occ-deal-container .card-header .carrier-logo{height:30px;}
+.occ-title{font-weight: bold;font-size: 16px;}
+.occ-title .occ-iata{font-size:14px;color:#999;}
+
+.list .smart-select .item-title{display:none;}
+.smart-select .item-after{max-width: 100%;}
+.smart-select.no-default {font-weight: bold}
+.smart-select.no-default .item-after{color:#000}
+*/

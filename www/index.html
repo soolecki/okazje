@@ -2,94 +2,91 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#774488">
+  <meta name="theme-color" content="#2196f3">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>Okazje</title>
-  <link rel="icon" sizes="512x512" href="icons/favicon-512x512.png">
-  <link rel="icon" sizes="192x192" href="icons/favicon-192x192.png">
-  <link rel="icon" sizes="128x128" href="icons/favicon-128x128.png">
-  <link rel="apple-touch-icon" sizes="128x128" href="icons/favicon-128x128.png">
-  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="icons/favicon-128x128.png">
+  <title>Tanie loty</title>
 
-  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="framework7/css/framework7.bundle.min.css">
   <link rel="stylesheet" href="css/icons.css">
-
   <link rel="stylesheet" href="css/app.css">
-  <!--<style><?php echo file_get_contents('css/app.css')?></style>-->
-
-  <link rel="manifest" href="manifest.json">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
-
-<body style="background-color:#73b6e1">
+<body>
   <div id="app">
     <div class="statusbar"></div>
-
-    <div class="panel panel-right panel-reveal theme-light">
+    <div class="panel panel-right panel-reveal theme-dark">
       <div class="view">
         <div class="page">
-          <div class="page-content" style="padding:10px">
-
-          <div class="list">
-            <ul>
-              <li>
-                <a href="/favorites/" class="item-content panel-close">
-                  <div class="item-media">
-                    <i class="icon material-icons">favorite</i>                    
-                  </div>
-                  <div class="item-inner">
-                    <div class="item-title">Ulubione</div>
-                    <div class="item-after favorites-count">-</div>
-                  </div>
-                </a>
-              </li>
-
-              <li>
-                <a href="/" class="item-content panel-close">
-                  <div class="item-media">
-                    <i class="icon material-icons">info</i>                    
-                  </div>
-                  <div class="item-inner">
-                    <div class="item-title">O aplikacji</div>
-                  </div>
-                </a>
-              </li>
-
-              <li>
-                <a href="/" class="item-content panel-close">
-                  <div class="item-media">
-                    <i class="icon material-icons">beenhere</i>                    
-                  </div>
-                  <div class="item-inner">
-                    <div class="item-title">Polityka prywatności</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Menu</div>
+            </div>
           </div>
-
+          <div class="page-content">
+            <div class="block">Elementy menu</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="view view-main">
-      <div class="page" data-name="home">
-        <div class="page-content">
+    <!-- Views/Tabs container -->
+
+    <div class="views tabs safe-areas">
+      <div class="toolbar tabbar-labels toolbar-bottom">
+        <div class="toolbar-inner">
+          <a href="#view-home" class="tab-link tab-link-active">
+            <i class="icon f7-icons ios-only">home</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">home_fill</i>
+            <i class="icon material-icons md-only">home</i>
+            <span class="tabbar-label">Okazje</span>
+          </a>
+          <a href="#view-flightsearch" class="tab-link">
+            <i class="icon f7-icons ios-only">list</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">list_fill</i>
+            <i class="icon material-icons md-only">view_list</i>
+            <span class="tabbar-label">Loty</span>
+          </a>
+          <a href="#view-news" class="tab-link">
+            <i class="icon f7-icons ios-only">settings</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
+            <i class="icon material-icons md-only">settings</i>
+            <span class="tabbar-label">Newsy</span>
+          </a>
         </div>
+      </div>
+
+      <div id="view-home" class="view view-main tab tab-active">
+      </div>
+
+      <div id="view-flightsearch" class="view tab">
+      </div>
+
+      <div id="view-news" class="view tab">
       </div>
     </div>
 
+  </div>
+  <!-- Cordova -->
+  
   <script src="cordova.js"></script>
-  <script src="framework7/js/framework7.min.js"></script>
+  
+
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.bundle.min.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/app.js"></script>
-
 </body>
 </html>
