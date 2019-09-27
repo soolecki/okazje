@@ -1,0 +1,56 @@
+<div class="page" data-name="home">
+
+  <div class="page-content page-searchform {{mode}}" style="display:flex;flex-direction:column;width:100%;justify-content: center;">
+
+    <div class="fab fab-right-top">
+      <a href="#" class="link icon-only panel-open" data-panel="right">
+        <i class="icon f7-icons ios-only">menu</i>
+        <i class="icon material-icons md-only">menu</i>
+      </a>
+    </div>
+
+          <h1>Najlepsze okazje<br>w jednym miejscu.</h1>
+
+          <form class="list form-store-data" id="filters_form"  action="https://www.tanie-loty.com.pl/okazje/" method="get">
+              <input type="hidden" name="view" value="list">
+              <input type="hidden" name="app" value="true">
+              <input type="hidden" name="mode">
+            <ul>
+              {{#each filters}} 
+                <li class="item-filters-{{@key}} smart-select">
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-input-wrap input-dropdown-wrap">
+                        <select name="filter_{{@key}}" multiple>
+                          {{#each this}} 
+                          <option value="{{this.slug}}" >{{this.title}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+
+            <div id="filters_form_advanced_toggle" class="button">
+              <span class="more"><i class="f7-icons">chevron_down</i> więcej opcji</span>
+              <span class="less"><i class="f7-icons">chevron_up</i> mniej opcji</span>
+            </div>
+
+          </form>
+
+          <button class="col button button-big button-fill" id="filters_form_submit">Szukaj</button>
+
+  </div>
+
+        <!--<div class="toolbar">
+          <div class="toolbar-inner">
+            <a class="link">Ulubione</a>
+            <a href="/home/" class="link">Wyszukiwanie</a>
+            <a class="link">Ustawienia</a>
+          </div>
+        </div>-->
+
+
+</div>
