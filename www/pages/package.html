@@ -19,7 +19,7 @@
         {{/if}}
         <a class="link favorite icon-only">
           <i class="icon f7-icons ios-only">heart</i>
-          <i class="icon material-icons md-only">{{#js_if "this.favorited == true"}}favorite{{/js_if}}{{#js_if "this.favorited == false"}}favorite_border{{/js_if}}</i>
+          <i class="icon material-icons md-only">{{#js_if "this.favorited == true"}}favorite{{/js_if}}{{#js_if "this.favorited != true"}}favorite_border{{/js_if}}</i>
         </a>
       </div>
     </div>

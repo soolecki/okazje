@@ -4,20 +4,23 @@
     url: './pages/home.html',
     on: {
       pageInit:function (e, page){
-
-        var filter_date_min = app.calendar.create({
+        filter_date_min = app.calendar.create({
           inputEl: '[name="filter_date_min"]',
-          closeOnSelect: true
+          closeOnSelect: true,
+          dateFormat: 'yyyy-mm-dd',
+          minDate: new Date(),
         });
-        var filter_date_max = app.calendar.create({
+        filter_date_max = app.calendar.create({
           inputEl: '[name="filter_date_max"]',
-          closeOnSelect: true
+          closeOnSelect: true,
+          dateFormat: 'yyyy-mm-dd',
+          minDate: new Date(),
         });
 
         filter_days_min = parseInt( $$('[name=filter_days_min]').val() ) || 1;
         filter_days_max = parseInt( $$('[name=filter_days_max]').val() ) || 21;
 
-        var days_filter = app.range.create({
+        days_filter = app.range.create({
             el: '#days_filter',
             value: [filter_days_min,filter_days_max],
             on:{
@@ -114,8 +117,8 @@
           result: result,
           img_base: 'https://img.tanie-loty.com.pl/media/slir/w'+(Math.min(960,Math.ceil($$('#app').width()/20)*40))+'-q80/',
           shareable: navigator.share,
-          last_list: document.last_list?document.last_list:'/home/'
-
+          last_list: document.last_list?document.last_list:'/home/',
+          favorited: isFavorited(routeTo.path),
         } });
         app.preloader.hide();
 
@@ -192,6 +195,39 @@
 
   },    
 
+  {
+    path: '/favorites/',
+    //url: './pages/pakiet.html',
+
+    async: function (routeTo, routeFrom, resolve, reject) {
+      document.last_list='/favorites/';
+      var router = this;
+      var app = router.app;
+      app.preloader.show();
+      favorites = getFavorites();
+      
+      for (var key in favorites) {
+        var obj=favorites[key];
+          card_price='<b>'+obj.price+'</b> zł';
+        obj.rendered_html='<a href="'+obj.url+'" class="card"><div data-background="'+obj.image+'" class="card-header card-header-image align-items-flex-end lazy lazy-fade-in"></div><div class="card-content card-content-padding"><p><b>'+obj.title+'</b></p></div><div class="card-footer"><span class="card-price">'+card_price+'</span><span class="col button button-fill">Sprawdź</span></div></a>';
+
+      }
+
+      resolve(
+        {
+          templateUrl: './pages/list.html',
+        },
+        {
+          context: { list: favorites, title: 'Ulubione', type: 'favorites' }
+        }            
+      );
+      app.preloader.hide();
+
+    }
+
+  },  
+
+
 
 
 
@@ -255,12 +291,21 @@
           },
         });        
 
-        var calendarRange = app.calendar.create({
-          inputEl: '#demo-calendar-range',
-          dateFormat: 'dd-mm-yyyy',
+        var flightDate = app.calendar.create({
+          inputEl: '#flight-date',
+          dateFormat: 'dd M yyyy',
+          closeOnSelect: true,
+          minDate: new Date(),
+        });   
+
+        var flightRange = app.calendar.create({
+          inputEl: '#flight-range',
+          dateFormat: 'dd M yyyy',
           rangePicker: true,
           closeOnSelect: true,
+          minDate: new Date(),
         });   
+
       }
     }
 

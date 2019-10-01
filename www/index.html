@@ -27,7 +27,7 @@
 <body>
   <div id="app">
     <div class="statusbar"></div>
-    <div class="panel panel-right panel-reveal theme-dark">
+    <div class="panel panel-right panel-reveal">
       <div class="view">
         <div class="page">
           <div class="navbar">
@@ -36,7 +36,36 @@
             </div>
           </div>
           <div class="page-content">
-            <div class="block">Elementy menu</div>
+
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="/favorites/" class="item-content panel-close">
+                    <div class="item-media">
+                      <i class="icon material-icons">favorite</i>                    
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title">Ulubione</div>
+                      <div class="item-after favorites-count">-</div>
+                    </div>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/about/" class="item-content panel-close">
+                    <div class="item-media">
+                      <i class="icon material-icons">info</i>                    
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title">O aplikacji</div>
+                    </div>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+
           </div>
         </div>
       </div>
