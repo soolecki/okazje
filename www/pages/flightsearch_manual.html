@@ -1,0 +1,239 @@
+<div class="page" data-name="flightsearch">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="title sliding">Loty</div>
+      <div class="right">
+        <a href="#" class="link icon-only panel-open" data-panel="right">
+          <i class="icon f7-icons ios-only">menu</i>
+          <i class="icon material-icons md-only">menu</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="page-content">
+
+    <div class="esky-widget"></div>
+
+    <form class="form-store-data" id="flight_search" action="https://bluesky.tanie-loty.com.pl/complete_informations/fill_flight_data" method="post" target="_blank">
+
+      <input type="hidden" name="data[Multisearches][now_searching]" value="F" />
+      <input type="hidden" name="data[Multisearches][fly_cheap_lines]" value="1" />
+      <input type="hidden" name="data[Multisearches][page]" id="page" value="2" />
+
+      <input type="hidden" name="data[Multisearches][start_date][1]">
+      <input type="hidden" name="data[Multisearches][end_date][1]">
+
+      <input type="hidden" name="data[Multisearches][end_date][1]">
+      <input type="hidden" name="data[Multisearches][end_date][1]">
+      <input type="hidden" name="data[Multisearches][end_date][1]">
+      <input type="hidden" name="data[Multisearches][end_date][1]">
+
+      <!--<input type="hidden" name="data[Multisearches][adt]" value="2">
+      <input type="hidden" name="data[Multisearches][chd]" value="1">-->
+<!--      <input type="hidden" name="data[Multisearches][ch_age_1]" value="15">
+      <input type="hidden" name="data[Multisearches][ch_age_2]">
+      <input type="hidden" name="data[Multisearches][ch_age_3]">
+      <input type="hidden" name="data[Multisearches][ch_age_4]">
+      <input type="hidden" name="data[Multisearches][ch_age_5]">
+      <input type="hidden" name="data[Multisearches][ch_age_6]">-->
+
+
+      <div class="list" style="margin:0">
+        <ul>
+
+          <label class="item-checkbox item-content">
+            <input type="checkbox" name="flight_type_return" value="true" checked="checked">
+            <i class="icon icon-checkbox"></i>
+            <div class="item-inner">
+              <div class="item-title">W obie strony</div>
+            </div>
+          </label>
+
+          <li>
+            <a class="item-link smart-select smart-select-init" href="#" id="search_flight_from">
+              <input type="hidden" name="data[Multisearches][from][1]">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Skąd?</div>
+                  <div class="item-after"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="item-link smart-select smart-select-init" href="#" id="search_flight_to">
+              <input type="hidden" name="data[Multisearches][to][1]">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Dokąd</div>
+                  <div class="item-after"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="item-content item-input item-input-flight-date" style="display:none">
+            <div class="item-inner">
+              <div class="item-title">Data wylotu</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Wybierz datę" readonly="readonly" id="flight-date"/>
+              </div>
+            </div>
+          </li>
+
+          <li class="item-content item-input item-input-flight-range">
+            <div class="item-inner">
+              <div class="item-title">Daty wylotu i powrotu</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Wybierz daty" readonly="readonly" id="flight-range"/>
+              </div>
+            </div>
+          </li>
+
+
+        </ul>
+      </div>
+
+
+      <div class="list" style="margin:0">
+        <ul>
+
+          <li class="accordion-item"><a href="#" class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title">Pasażerowie</div> <span class="badge badge-blue badge-passengers-count">1</span>
+              </div></a>
+            <div class="accordion-item-content">
+
+              <ul>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title">Dorośli<!--<span id="adt-count">1</span>--></div>
+                    <div class="item-after">
+                      <div class="stepper stepper-init stepper-raised stepper-adt" data-value-el="#adt-count">
+                        <div class="stepper-button-minus"></div>
+                        <div class="stepper-input-wrap"><input name="data[Multisearches][adt]" type="text" value="1" min="0" max="10" step="1" readonly="" class=""></div>
+                        <div class="stepper-button-plus"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title">Dzieci<!--<span id="chd-count">3</span>--></div>
+                    <div class="item-after">
+                      <div class="stepper stepper-init stepper-raised stepper-chd" data-value-el="#chd-count">
+                        <div class="stepper-button-minus"></div>
+                        <div class="stepper-input-wrap"><input name="data[Multisearches][chd]" type="text" value="0" min="0" max="10" step="1" readonly="" class=""></div>
+                        <div class="stepper-button-plus"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <a href="#" class="item-link smart-select smart-select-init" data-open-in="popover" data-close-on-select="true">
+                    <select name="data[Multisearches][ch_age_1]">
+                      <option value="0"><1</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Wiek dziecka 1</div>
+                        <div class="item-after">8</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>         
+
+                <li>
+                  <a href="#" class="item-link smart-select smart-select-init" data-open-in="popover" data-close-on-select="true">
+                    <select name="data[Multisearches][ch_age_2]">
+                      <option value="0"><1</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Wiek dziecka 2</div>
+                        <div class="item-after">8</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>         
+
+                <li>
+                  <a href="#" class="item-link smart-select smart-select-init" data-open-in="popover" data-close-on-select="true">
+                    <select name="data[Multisearches][ch_age_3]">
+                      <option value="0"><1</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Wiek dziecka 3</div>
+                        <div class="item-after">8</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>         
+
+                <li>
+                  <a href="#" class="item-link smart-select smart-select-init" data-open-in="popover" data-close-on-select="true">
+                    <select name="data[Multisearches][ch_age_4]">
+                      <option value="0"><1</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Wiek dziecka 4</div>
+                        <div class="item-after">8</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>         
+
+                <li>
+                  <a href="#" class="item-link smart-select smart-select-init" data-open-in="popover" data-close-on-select="true">
+                    <select name="data[Multisearches][ch_age_5]">
+                      <option value="0"><1</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Wiek dziecka 5</div>
+                        <div class="item-after">8</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>         
+
+                <li>
+                  <a href="#" class="item-link smart-select smart-select-init" data-open-in="popover" data-close-on-select="true">
+                    <select name="data[Multisearches][ch_age_6]">
+                      <option value="0"><1</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Wiek dziecka 6</div>
+                        <div class="item-after">8</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>         
+              </ul>
+
+
+            </div>
+          </li>
+
+
+
+        </ul>
+      </div>
+
+
+  
+      <div class="block">
+        <input type="submit" value="szukaj" class="col button button-large button-fill button-raised color-blue">
+      </div>
+
+    </form>
+
+  </div>
+</div>
+

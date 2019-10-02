@@ -126,7 +126,7 @@ $$('#app').on('click', '.favorite', function (e) {
 });
 
 $$('#app').on('click', '.favorite', function (e) {
-  console.log('LINK!');
+  //console.log('LINK!');
 })
 
 function getFavorites(){

@@ -241,7 +241,20 @@
 
 
     on: {
+
+      pageAfterIn: function(){
+              renderSBWidget($$('.esky-widget')[0]);
+            },
+
       pageInit: function(){
+
+
+
+      /*
+
+        
+        app.form.fillFromData('#flight_search', app.form.getFormData('flight_search') )
+
 
         var search_flight_from = app.autocomplete.create({
           openIn: 'popup',
@@ -305,6 +318,33 @@
           closeOnSelect: true,
           minDate: new Date(),
         });   
+
+        $$('[name="flight_type_return"]').on('change', function (e){
+          if( $$('[name="flight_type_return"]')[0].checked == true){
+            $$('.item-input-flight-date').hide();
+            $$('.item-input-flight-range').show();
+          }else{
+            $$('.item-input-flight-date').show();
+            $$('.item-input-flight-range').hide();
+          }
+        });
+
+        passengersRecalc();
+
+        app.stepper.create({
+          el:'.stepper-adt',
+          max:9,
+        }).on('change', function(v){
+          passengersRecalc();
+          app.stepper.get('.stepper-chd').params
+        })
+
+        app.stepper.create({
+          el:'.stepper-chd',
+          max:9,
+        }).on('change', function(v){
+          passengersRecalc();
+        });*/
 
       }
     }
@@ -401,3 +441,11 @@
     url: './pages/404.html',
   },
 ];
+
+
+function passengersRecalc(){
+        count_adt = parseInt($$('[name="data[Multisearches][adt]"]').val());
+        count_chd = parseInt($$('[name="data[Multisearches][chd]"]').val());
+        $$('.badge-passengers-count').text(count_adt+count_chd);
+
+}
