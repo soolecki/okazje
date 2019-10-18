@@ -2,6 +2,7 @@
 <div class="page product" data-name="tour">
 
   <div class="navbar">
+    <div class="navbar-bg"></div>
     <div class="navbar-inner">
       <div class="left">
         <a class="link back icon-only">
@@ -54,80 +55,44 @@
 <!-- LOT ------------------->
 
     <div class="block-title">Lot</div>
-    <!--<img class="carrier-logo" src="//img.tanie-loty.com.pl/storage_local/images/airlines/{{result.record.carrier_code}}.gif">-->
     <div class="card occ-deal-container occ-flight">
-
         <div class="card-content card-content-padding">
-        
           <div class="occ-title">
             {{result.city_from.name}} ⇄ {{result.city_to.name}} 
             {{#js_if "this.result.record.id>0"}}
               <span class="occ-iata">({{result.airport_from.iata}}&nbsp;-&nbsp;{{result.airport_to.iata}})</span>
             {{/js_if}}
           </div>
-
           <div class="row">
-            <div class="col"><small>{{result.date_from__day_of_week}}</small>{{result.date_from__formatted}}</div>
-            <div class="col"><small>{{result.date_to__day_of_week}}</small>{{result.date_to__formatted}}</div>
+            <div class="col">od <b>{{result.record.date_from}}</b> do <b>{{result.record.date_to}}</b></div>
           </div>
-
-          <span class="occ-deal-element occ-luggage">{{result.record.luggage_description}}</span>
         </div>
-
-        <div class="card-footer">
-          <span class="card-price"><b>{{result.record.price_flight}}</b> zł</span>
-          
-
-          {{#if result.record.url_flight}}
-            <a href="{{result.record.url_flight}}" class="link external" target="_blank">Sprawdź lot (L)</a>
-          {{else}}
-            <a href="#" class="link">Sprawdź lot (B)</a>
-          {{/if}}
-        </div>
-
     </div>       
-
-<!-- HOTEL ----------------->
 
     <div class="block-title">Hotel</div>
     <div class="card occ-deal-container occ-hotel">
-
-        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.hotel.images)[0]"}}"><div class="card-header-image-caption">{{result.record.hotel.name}}</div></div>
-
         <div class="card-content card-content-padding">
-          {{result.record.hotel.description}}
+          <div class="occ-title">
+            {{result.record.hotel.name}}
+            <ul class="occ-hotel-details">
+              {{#js_if "this.result.record.hotel.position==1"}}<li><span class="ic-beach"></span>blisko plaży</li>{{/js_if}}
+              {{#js_if "this.result.record.hotel.position==2"}}<li><span class="ic-center"></span>centrum miasta</li>{{/js_if}}
+              {{#js_if "this.result.record.hotel.pool==1"}}<li><span class="ic-pool"></span>basen</li>{{/js_if}}
+              {{#js_if "this.result.record.hotel['free-wifi']==1"}}<li><span class="ic-wifi"></span>darmowy internet</li>{{/js_if}}
+              {{#js_if "this.result.record.hotel.additional_info"}}
+                {{#each result.record.hotel.additional_info}}
+                  <li><span class="ic-info"></span>{{this}}</li>
+                {{/each}}
+              {{/js_if}}
+            </ul>
+          </div>
         </div>
-
-        <div class="card-footer">
-          <span class="card-price"><b>{{result.record.price_hotel}}</b> zł</span>
-          <a href="{{result.record.url_hotel}}" class="link external" target="_blank">Zobacz hotel</a>
-        </div>
-
     </div>       
 
-<!-- BILET ----------------->
-
-    {{#js_if "this.result.record.price_ticket>0"}}
-
-    <div class="block-title">Bilet</div>
-    <div class="card occ-deal-container occ-ticket">
-
-        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"><div class="card-header-image-caption">{{result.record.title_ticket}}</div></div>
-
-        <div class="card-content card-content-padding">
-          {{result.record.description_ticket}}
-        </div>
-
-        <div class="card-footer">
-          <span class="card-price"><b>{{result.record.price_ticket}}</b> zł</span>
-          <a href="{{result.record.url_ticket}}" class="link external" target="_blank">Sprawdź bilet</a>
-        </div>
-
-    </div>       
-
-    {{/js_if}}
-
-
-    
+    <div class="block">
+      <a href="{{result.record.url_generated}}" class="link external button button-fill iab-link" target="_blank">{{result.record.price}} zł - sprawdź</a>
     </div>
+
+   
+  </div>
 </div>

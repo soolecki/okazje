@@ -1,5 +1,6 @@
 <div class="page" data-name="flightsearch">
   <div class="navbar">
+  	<div class="navbar-bg"></div>
     <div class="navbar-inner">
       <div class="title sliding">Newsy</div>
       <div class="right">
@@ -10,21 +11,50 @@
       </div>
     </div>
   </div>
-  <div class="page-content">
+  <div class="page-content infinite-scroll-content">
 
-	{{#each news}}
-		<div class="card news-card">
-		  <div style="background-image:url({{image_url}})" class="card-header align-items-flex-end"><span>{{title}}</span></div>
-		  <div class="card-content card-content-padding">
-		    <!--<p class="date">Posted on January 21, 2015</p>-->
-		    <p>{{excerpt}}</p>
-		  </div>
-		  <div class="card-footer">
-		  	<a href="{{permalink}}" class="link external link-iab" target="_blank">Czytaj</a></div>
-		  	{{#if shareable}}<a href="#" class="link">Udostępnij</a>{{/if}}
-		</div>
-	{{/each}}
+	<div class="list media-list">
+	  <ul>
+		{{#each news}}
+		    <li>
 
+		      <a href="#" class="item-link item-content popup-open" data-popup=".popup-news-{{term_id}}">
+		      	<div class="item-media"><img data-src="{{image_url_feed}}" width=80 class="lazy lazy-fade-id media-list-image"/></div>
+		        <div class="item-inner">
+			        <div class="item-subtitle">{{post_date}}</div>
+					<div class="item-title-row">
+						<div class="item-title">{{title}}</div>
+					</div>
+		          <!--<div class="item-text">{{excerpt}}</div>-->
+		        </div>
+		      </a>
+
+			  <div class="popup popup-news-{{term_id}}"><div class="page"><div class="page-content">
+
+				<div class="navbar">
+					<div class="navbar-inner">
+					  <div class="left">
+						<a class="link back icon-only popup-close">
+							<i class="icon material-icons md-only">arrow_back</i>
+							<span class="if-not-md">Wróć</span>
+						</a>					    
+					  </div>
+					</div>
+				</div>
+				
+				<span class="occ-deal-pic lazy lazy-fade-in" data-background="{{image_url}}"></span>
+			    <div class="block">
+					<h1>{{title}}</h1>
+					<div class="popup-content"><!--  {{content}} --></div>
+			    </div>
+			  </div></div></div>
+			  
+		    </li>
+	    {{/each}}
+	   </ul>
+	</div>
+
+	<div class="preloader infinite-scroll-preloader"></div>
 		
   </div>
 </div>

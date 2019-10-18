@@ -5,6 +5,12 @@ if('serviceWorker' in navigator) {
 }
 
 var $$ = Dom7;
+var allowInfinite = true;
+
+var lastItemIndex = $$('.media-list>ul>li').length;
+var maxItems = 200;
+var itemsPerLoad = 20;
+
 
 // Framework7 App main instance
 var app  = new Framework7({
@@ -127,6 +133,12 @@ $$('#app').on('click', '.favorite', function (e) {
 
 $$('#app').on('click', '.favorite', function (e) {
   //console.log('LINK!');
+})
+
+$$(".main-tabs" ).on('tab:show', function() {
+  var $tabEl = $$(this).find('.tab-active');
+  var tabId = $tabEl.attr('id');
+
 })
 
 function getFavorites(){
