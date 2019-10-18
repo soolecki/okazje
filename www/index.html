@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="color-yellow">
     <div class="statusbar"></div>
     <div class="panel panel-right panel-reveal">
       <div class="view">
@@ -39,7 +39,7 @@
 
             <div class="list">
               <ul>
-                <li>
+                <li class="aw-menu-item-ulubione">
                   <a href="/favorites/" class="item-content panel-close">
                     <div class="item-media">
                       <i class="icon material-icons">favorite</i>                    
@@ -51,15 +51,49 @@
                   </a>
                 </li>
 
-                <li>
-                  <a href="/about/" class="item-content panel-close">
+                <li class="aw-menu-item-alerty">
+                  <a href="https://www.tanie-loty.com.pl/alerty" class="item-content external" target="_blank">
+                    <div class="item-media">
+                      <i class="icon material-icons">notifications</i>                    
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title">Alerty cenowe na maila</div>
+                    </div>
+                  </a>
+                </li>
+
+                <li class="aw-menu-item-kontakt">
+                  <a href="/kontakt/" class="item-content panel-close" target="_blank">
                     <div class="item-media">
                       <i class="icon material-icons">info</i>                    
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">O aplikacji</div>
+                      <div class="item-title">Kontakt</div>
                     </div>
                   </a>
+                </li>
+
+                <li class="aw-menu-item-social">
+                  <div class="item-content aw-icons">
+
+                    <a href="https://www.facebook.com/TanieLoty" class="item-media external aw-icon-fb" target="_blank">
+                      <i class="icon f7-icons">logo_facebook</i>                    
+                    </a>
+
+                    <a href="https://instagram.com/tanieloty" class="item-media external aw-icon-ig" target="_blank">
+                      <i class="icon f7-icons">logo_instagram</i>                    
+                    </a>
+
+                    <a href="https://twitter.com/Tanie_Loty" class="item-media external aw-icon-ig" target="_blank">
+                      <i class="icon f7-icons">logo_twitter</i>                    
+                    </a>
+
+                    <a href="https://www.youtube.com/user/TanieLotycompl?sub_confirmation=1" class="item-media external aw-icon-ig" target="_blank">
+                      <i class="icon f7-icons">play_rectangle_fill</i>                    
+                    </a>
+
+                  </div>
+
                 </li>
 
               </ul>
@@ -73,25 +107,19 @@
 
     <!-- Views/Tabs container -->
 
-    <div class="views tabs safe-areas">
+    <div class="views tabs main-tabs safe-areas">
       <div class="toolbar tabbar-labels toolbar-bottom">
         <div class="toolbar-inner">
           <a href="#view-home" class="tab-link tab-link-active">
-            <i class="icon f7-icons ios-only">home</i>
-            <i class="icon f7-icons ios-only icon-ios-fill">home_fill</i>
-            <i class="icon material-icons md-only">home</i>
+            <i class="icon material-icons">explore</i>
             <span class="tabbar-label">Okazje</span>
           </a>
           <a href="#view-flightsearch" class="tab-link">
-            <i class="icon f7-icons ios-only">list</i>
-            <i class="icon f7-icons ios-only icon-ios-fill">list_fill</i>
-            <i class="icon material-icons md-only">view_list</i>
+            <i class="icon material-icons">airplanemode_active</i>
             <span class="tabbar-label">Loty</span>
           </a>
           <a href="#view-news" class="tab-link">
-            <i class="icon f7-icons ios-only">settings</i>
-            <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
-            <i class="icon material-icons md-only">settings</i>
+            <i class="icon material-icons">rss_feed</i>
             <span class="tabbar-label">Newsy</span>
           </a>
         </div>
@@ -114,11 +142,11 @@
   
 
   <!-- Framework7 library -->
+  <script type="text/javascript" src="https://skybox.eskypartners.com/widget/qsf/init.js?partner_id=MTANIELOTY&services=flights"></script>
   <script src="framework7/js/framework7.bundle.min.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/app.js"></script>
 
-    <script type="text/javascript" src="https://skybox.eskypartners.com/widget/qsf/init.js?partner_id=MTANIELOTY&services=flights"></script>
 
 </body>
 </html>
