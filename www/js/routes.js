@@ -12,12 +12,14 @@
           closeOnSelect: true,
           dateFormat: 'yyyy-mm-dd',
           minDate: new Date(),
+          yearSelector: false,
         });
         filter_date_max = app.calendar.create({
           inputEl: '[name="filter_date_max"]',
           closeOnSelect: true,
           dateFormat: 'yyyy-mm-dd',
           minDate: new Date(),
+          yearSelector: false,
         });
 
         filter_days_min = parseInt( $$('[name=filter_days_min]').val() ) || 1;
@@ -52,17 +54,20 @@
 
             html='';
             result.list_home.forEach(function(entry) {
-              $el = $$('.home_okazje').eq(0);
-              $el.find('.card-header-image').attr('data-background',entry.image_url)
-              $el.find('a.card').attr('href', entry.url.replace('/okazje/','/okazje/entries/')).attr('class', 'card');
-              $el.find('.card-content b').html(entry.title);
+              if(entry.price>0){
+                $el = $$('.home_okazje').eq(0);
+                $el.find('.card-header-image').attr('data-background',entry.image_url)
+                $el.find('a.card').attr('href', entry.url.replace('/okazje/','/okazje/entries/')).attr('class', 'card');
+                $el.find('.card-content b').html(entry.title);
 
-              if(entry.price>0)$el.find('.card-price').html('<b>'+entry.price+'</b>&nbsp; zł');
-              else if(entry.lowest_price>0)$el.find('.card-price').html('<b>od '+entry.lowest_price+'</b>&nbsp; zł');
+                if(entry.price>0)$el.find('.card-price').html('<b>'+entry.price+'</b>&nbsp; zł');
+                //else if(entry.lowest_price>0)$el.find('.card-price').html('<b>od '+entry.lowest_price+'</b>&nbsp; zł');
 
-              $el.find('span.button').html('Sprawdź');
+                $el.find('span.button').html('Sprawdź');
 
-              html += $el.html();
+                html += $el.html();
+
+              }
             });
 
             $$('.home_okazje').html(html);
@@ -403,7 +408,6 @@
     on:{
       
       pageAfterIn: function (e, page) {  
-        $$('.popup .block a').addClass('link').addClass('external').attr('target','_blank');
 
         // Attach 'infinite' event handler
         $$('.infinite-scroll-content').on('infinite', function () {
@@ -446,6 +450,15 @@
           $$('#app>.popup .popup-content').html( $$('#app>.popup .popup-content').html().replace('<!--', '').replace('-->', '') );
            app.lazy.create('#app>.popup occ-deal-pic');
            $$('#app>.popup .occ-deal-pic').css('background-image','url('+$$('#app>.popup .occ-deal-pic').attr('data-background')+')');
+
+           $$('.wp-block-embed-youtube').forEach(function(){ $$(this).html( '<div class="embed-container"><iframe src="https://www.youtube.com/embed/'+( $$(this).removeClass('wp-block-embed-youtube').addClass('wp-block-embed-youtube-r').find('.wp-block-embed__wrapper').text().split('?')[1].split('v=')[1].split('&')[0] )+'" frameborder="0" allowfullscreen></iframe></div>' )  });
+
+          $$('.wp-block-embed-wordpress').forEach(function(){
+            url=$$(this).removeClass('wp-block-embed-wordpress').addClass('wp-block-embed-wordpress-r').find('.wp-block-embed__wrapper').text();
+            $$(this).html( '<div class="embed-container"><a href="'+url+'" target="_blank" class="link external">'+url+'</a></div>' )  });
+
+           $$('.popup .block a').addClass('link').addClass('external').attr('target','_blank');
+            FB.init({xfbml      : true,version    : 'v4.0'});
         });
 
       },
