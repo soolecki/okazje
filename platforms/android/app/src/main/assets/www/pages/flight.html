@@ -2,6 +2,7 @@
 <div class="page product" data-name="flight">
 
   <div class="navbar">
+    <div class="navbar-bg"></div>
     <div class="navbar-inner">
       <div class="left">
         <a class="link back icon-only">
@@ -19,7 +20,7 @@
         {{/if}}
         <a class="link favorite icon-only">
           <i class="icon f7-icons ios-only">heart</i>
-          <i class="icon material-icons md-only">{{#js_if "this.favorited == true"}}favorite{{/js_if}}{{#js_if "this.favorited == false"}}favorite_border{{/js_if}}</i>
+          <i class="icon material-icons md-only">{{#js_if "this.favorited == true"}}favorite{{/js_if}}{{#js_if "this.favorited != true"}}favorite_border{{/js_if}}</i>
         </a>
       </div>
     </div>
@@ -29,13 +30,13 @@
   <div class="toolbar toolbar-bottom-md">
     <div class="toolbar-inner">
       {{#js_if "this.result.prev_url"}}
-      <a href="{{js "this.result.prev_url.replace('/okazje/','/okazje/entries/')"}}" class="link" data-push-state="true">
+      <a href="{{js "this.result.prev_url.replace('/okazje/','/okazje/entries/')"}}" class="link link-iab" data-push-state="true">
         <i class="icon f7-icons ios-only">chevron_left</i>
         <i class="icon material-icons md-only">navigate_before</i>
       </a>
       {{/js_if}}
       <div class="title sliding">{{js "this.result.found_pos ? this.result.found_pos : 1"}}/{{js "Object.keys(this.result.collection).length"}}</div>
-      <a href="{{js "this.result.next_url.replace('/okazje/','/okazje/entries/')"}}" class="link" data-push-state="true">
+      <a href="{{js "this.result.next_url.replace('/okazje/','/okazje/entries/')"}}" class="link link-iab" data-push-state="true">
         <i class="icon f7-icons ios-only">chevron_right</i>
         <i class="icon material-icons md-only">navigate_next</i>
       </a>
@@ -47,7 +48,7 @@
     <span class="occ-deal-pic lazy lazy-fade-in" data-background="{{img_base}}{{result.image}}"></span>
     <span style="display:none" data-attr="image">{{img_base}}{{result.image}}</span>
 
-    <div class="block"><h1 data-attr="title">{{result.record.title}}</h1></div>
+    <div class="block aw-block-title"><h1 data-attr="title">{{result.record.title}}</h1></div>
 
     <div class="block">{{result.record.description}}</div>
 
@@ -82,7 +83,7 @@
 
         <div class="card-footer">
           <span class="card-price"><b data-attr="price">{{result.record.price}}</b> zł</span>
-          <a href="{{result.record.url_flight}}" class="link external" target="_blank">Sprawdź lot</a>
+          <a href="{{result.record.url_flight}}" class="link external button button-fill iab-link" target="_blank">Sprawdź lot</a>
         </div>
     
     </div>

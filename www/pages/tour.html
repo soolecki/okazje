@@ -73,7 +73,7 @@
     <div class="card occ-deal-container occ-hotel">
         <div class="card-content card-content-padding">
           <div class="occ-title">
-            {{result.record.hotel.name}}
+            <h3>{{result.record.hotel.name}}{{#js_if "this.result.record.hotel.rating>0"}} <span class="occ-hotel-stars">{{result.record.hotel.ratingstars}}</span>{{/js_if}}</h3>
             <ul class="occ-hotel-details">
               {{#js_if "this.result.record.hotel.position==1"}}<li><span class="ic-beach"></span>blisko plaży</li>{{/js_if}}
               {{#js_if "this.result.record.hotel.position==2"}}<li><span class="ic-center"></span>centrum miasta</li>{{/js_if}}
@@ -84,10 +84,21 @@
                   <li><span class="ic-info"></span>{{this}}</li>
                 {{/each}}
               {{/js_if}}
+              <li class="occ-meals">{{result.record.meal_plan}}</li>
             </ul>
           </div>
         </div>
     </div>       
+
+    {{#js_if "this.result.additional_images"}}
+      {{#each result.additional_images}}
+
+      <div class="card additional_images">
+        <img class="lazy lazy-fade-in" data-src="https://img.tanie-loty.com.pl{{this}}" />
+      </div>      
+      {{/each}}
+    {{/js_if}}
+
 
     <div class="block">
       <a href="{{result.record.url_generated}}" class="link external button button-fill iab-link" target="_blank">{{result.record.price}} zł - sprawdź</a>

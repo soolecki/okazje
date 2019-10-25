@@ -135,10 +135,19 @@
         switch(result.type){
           case 'tour':{
             result.record.hotel.additional_info = result.record.hotel.additional_info.split(',');
+            if(result.record.hotel.rating>0){
+              result.record.hotel.ratingstars="★".repeat( result.record.hotel.rating );
+            }            
             tplname='tour.html';break;
           }
           case 'flight':{tplname='flight.html';break;}
-          default:{tplname='package.html';}
+          default:{
+            result.record.hotel.additional_info = result.record.hotel.additional_info.split(',');
+            if(result.record.hotel.rating>0){
+              result.record.hotel.ratingstars="★".repeat( result.record.hotel.rating );
+            }
+            tplname='package.html';
+          }
         }
 
         resolve( { templateUrl: './pages/'+tplname }, { context: {
@@ -409,6 +418,8 @@
       
       pageAfterIn: function (e, page) {  
 
+        $$('.dummy_li').html( $$('.media-list>ul>li').eq(0).html() );
+
         // Attach 'infinite' event handler
         $$('.infinite-scroll-content').on('infinite', function () {
 
@@ -426,15 +437,16 @@
 
             html='';
             result.news.forEach(function(entry) {
-              $el = $$('.media-list>ul>li').eq(0);
+              $el = $$('li.dummy_li').eq(0);
               $el.find('.popup-open').attr('data-popup','.popup-news-'+entry.term_id);
               $el.find('.item-media img').attr('src', entry.image_url);
               $el.find('.item-title').html(entry.title);
+              $el.find('.item-subtitle').html(entry.post_date);
               $el.find('.item-text').html(entry.excerpt);
               $el.find('.popup').attr('class','popup popup-news-'+entry.term_id);
-              $el.find('.popup .occ-deal-pic').attr('style',"background-image: url('"+entry.image_url+"');");
-              $el.find('.popup .block h2').html(entry.title);
-              $el.find('.popup .popup-content').html(entry.content);
+              $el.find('.popup .occ-deal-pic').attr('style',"").attr('data-background', entry.image_url );
+              $el.find('.popup .block h1').html(entry.title);
+              $el.find('.popup .popup-content').html('<!-- '+entry.content+' -->');
 
               html += '<li>' + $el.html() + '</li>';
             });
@@ -459,6 +471,11 @@
 
            $$('.popup .block a').addClass('link').addClass('external').attr('target','_blank');
             FB.init({xfbml      : true,version    : 'v4.0'});
+
+            try{
+              instgrm.Embeds.process()  
+            }catch(e){}
+            
         });
 
       },

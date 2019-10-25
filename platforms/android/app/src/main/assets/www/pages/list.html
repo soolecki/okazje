@@ -1,9 +1,10 @@
-<div class="page products_list" data-name="list">
+<div class="page products_list color-red" data-name="list">
 
   <div class="navbar">
+    <div class="navbar-bg"></div>
     <div class="navbar-inner">
       <div class="left">
-        <a href="/home/" class="link icon-only">
+        <a href="/" class="link icon-only back">
           <i class="icon f7-icons ios-only">arrow_left</i>
           <i class="icon material-icons md-only">arrow_back</i>
         </a>
@@ -12,7 +13,7 @@
     </div>
   </div>
 
-  <div class="page-content page-list" style="display: flex;flex-wrap: wrap;width: 100%;{{#js_if "this.list.length==0"}}align-content:center;text-align:center{{/js_if}}">
+  <div class="page-content page-list">
 
       {{#each list}} 
         {{rendered_html}}

@@ -96,51 +96,40 @@
         <div class="card-header card-header-image lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.hotel.images)[0]"}}"></div>
 
         <div class="card-content card-content-padding">
-          {{result.record.hotel.description}}
+          <h3>{{result.record.hotel.name}}{{#js_if "this.result.record.hotel.rating>0"}} <span class="occ-hotel-stars">{{result.record.hotel.ratingstars}}</span>{{/js_if}}</h3>
+          <div>{{result.record.hotel.description}}</div>
+          <ul class="occ-hotel-details">
+            {{#js_if "this.result.record.hotel.position==1"}}<li><span class="ic-beach"></span>blisko plaży</li>{{/js_if}}
+            {{#js_if "this.result.record.hotel.position==2"}}<li><span class="ic-center"></span>centrum miasta</li>{{/js_if}}
+            {{#js_if "this.result.record.hotel.pool==1"}}<li><span class="ic-pool"></span>basen</li>{{/js_if}}
+            {{#js_if "this.result.record.hotel['free-wifi']==1"}}<li><span class="ic-wifi"></span>darmowy internet</li>{{/js_if}}
+            {{#js_if "this.result.record.hotel.additional_info"}}
+              {{#each result.record.hotel.additional_info}}
+                <li><span class="ic-info"></span>{{this}}</li>
+              {{/each}}
+            {{/js_if}}
+          </ul>          
         </div>
 
         <div class="card-footer">
-          <span class="card-price"><b>{{result.record.price_hotel}}</b> zł</span>
-          <a href="{{result.record.url_hotel}}" class="link external button button-fill" target="_blank">Sprawdź bilet</a>
+          <span class="card-price"><b>{{result.record.price_hotel}}</b> zł/noc/os.</span>
+          <a href="{{result.record.url_hotel}}" class="link external button button-fill" target="_blank">Zobacz hotel</a>
         </div>
 
     </div>          
 
-<!-- SAMOCHÓD ----------------->
-
-    {{#js_if "this.result.record.price_car>0"}}
-
-    <div class="block-title">Samochód</div>
-    <div class="card occ-deal-container occ-car">
-
-        <div class="card-header card-header-image lazy lazy-fade-in" data-background="">
-          <img src="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.car.images)[0]"}}">
-        </div>
-
-        <div class="card-content card-content-padding">
-          {{result.record.car.title}}
-        </div>
-
-        <div class="card-footer">
-          <span class="card-price"><b>{{result.record.price_car}}</b> zł/os.</span>
-          <a href="{{result.record.url_car}}" class="link external button button-fill" target="_blank">Zobacz auto</a>
-        </div>
-
-    </div>    
-
-    {{/js_if}}
-
-<!-- BILET ----------------->
+<!-- ATRAKCJE ----------------->
 
     {{#js_if "this.result.record.price_ticket>0"}}
 
     <div class="block-title">Atrakcje</div>
     <div class="card occ-deal-container occ-ticket">
 
-        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"><div class="card-header-image-caption">{{result.record.title_ticket}}</div></div>
+        <div class="card-header card-header-image lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.image_ticket)[0]"}}"></div>
 
         <div class="card-content card-content-padding">
-          {{result.record.description_ticket}}
+          <h3>{{result.record.title_ticket}}</h3>
+          <div>{{result.record.description_ticket}}</div>
         </div>
 
         <div class="card-footer">
@@ -159,10 +148,11 @@
     <div class="block-title">Transfer</div>
     <div class="card occ-deal-container occ-bus">
 
-        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}{{js "JSON.parse(this.result.record.image_bus)[0]"}}"><div class="card-header-image-caption">{{result.record.title_bus}}</div></div>
+        <div class="card-header card-header-image align-items-flex-end lazy lazy-fade-in" data-background="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.image_bus)[0]"}}"></div>
 
         <div class="card-content card-content-padding">
-          {{result.record.description_bus}}
+          <h3>{{result.record.title_bus}}</h3>
+          <div>{{result.record.description_bus}}</div>
         </div>
 
         <div class="card-footer">
@@ -174,5 +164,29 @@
 
     {{/js_if}}
     
+<!-- SAMOCHÓD ----------------->
+
+    {{#js_if "this.result.record.price_car>0"}}
+
+    <div class="block-title">Samochód</div>
+    <div class="card occ-deal-container occ-car">
+
+        <div class="card-header card-header-image lazy lazy-fade-in" data-background="">
+          <img src="{{img_base}}storage_local/okazje/{{js "JSON.parse(this.result.record.car.images)[0]"}}">
+        </div>
+
+        <div class="card-content card-content-padding">
+          {{result.record.car.title}}
+        </div>
+
+        <div class="card-footer">
+          <span class="card-price"><b>{{result.record.price_car}}</b> zł za cały pobyt/os.</span>
+          <a href="{{result.record.url_car}}" class="link external button button-fill" target="_blank">Zobacz auto</a>
+        </div>
+
+    </div>    
+
+    {{/js_if}}
+
     </div>
 </div>
